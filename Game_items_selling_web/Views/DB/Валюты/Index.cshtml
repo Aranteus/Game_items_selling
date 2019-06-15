@@ -1,0 +1,33 @@
+﻿@model IEnumerable<Game_items_selling_web.Models.Валюты>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Валюта)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Валюта)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Буквенный_код_валюты }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Буквенный_код_валюты }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Буквенный_код_валюты })
+        </td>
+    </tr>
+}
+
+</table>

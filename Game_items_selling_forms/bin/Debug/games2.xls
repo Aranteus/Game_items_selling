@@ -1,0 +1,134 @@
+<?xml version="1.0"?>
+<?mso-application progid="Excel.Sheet"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+ xmlns:o="urn:schemas-microsoft-com:office:office"
+ xmlns:x="urn:schemas-microsoft-com:office:excel"
+ xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+ xmlns:html="http://www.w3.org/TR/REC-html40">
+ <DocumentProperties xmlns="urn:schemas-microsoft-com:office:office">
+  <Author>User</Author>
+  <LastAuthor>User</LastAuthor>
+  <Created>2019-03-17T12:39:22Z</Created>
+  <Company>SPecialiST RePack</Company>
+  <Version>15.00</Version>
+ </DocumentProperties>
+ <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
+  <ReadOnlyRecommended/>
+  <AllowPNG/>
+ </OfficeDocumentSettings>
+ <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
+  <WindowHeight>13725</WindowHeight>
+  <WindowWidth>19200</WindowWidth>
+  <WindowTopX>0</WindowTopX>
+  <WindowTopY>0</WindowTopY>
+  <ProtectStructure>False</ProtectStructure>
+  <ProtectWindows>False</ProtectWindows>
+ </ExcelWorkbook>
+ <Styles>
+  <Style ss:ID="Default" ss:Name="Normal">
+   <Alignment ss:Vertical="Bottom"/>
+   <Borders/>
+   <Font ss:FontName="Calibri" x:CharSet="204" x:Family="Swiss" ss:Size="11"
+    ss:Color="#000000"/>
+   <Interior/>
+   <NumberFormat/>
+   <Protection/>
+  </Style>
+  <Style ss:ID="s62">
+   <NumberFormat ss:Format="Short Date"/>
+  </Style>
+ </Styles>
+ <Worksheet ss:Name="Exported from Database">
+  <Table ss:ExpandedColumnCount="10" ss:ExpandedRowCount="8" x:FullColumns="1"
+   x:FullRows="1" ss:DefaultRowHeight="15">
+   <Row>
+    <Cell><Data ss:Type="String">Код игры</Data></Cell>
+    <Cell><Data ss:Type="String">Название игры</Data></Cell>
+    <Cell><Data ss:Type="String">Движок</Data></Cell>
+    <Cell><Data ss:Type="String">Дата создания</Data></Cell>
+    <Cell><Data ss:Type="String">Платформа</Data></Cell>
+    <Cell><Data ss:Type="String">Разработчик</Data></Cell>
+    <Cell><Data ss:Type="String">Жанр</Data></Cell>
+    <Cell><Data ss:Type="String">Издатель</Data></Cell>
+    <Cell><Data ss:Type="String">Название рейтинга</Data></Cell>
+    <Cell><Data ss:Type="String">Рейтинг</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">1</Data></Cell>
+    <Cell><Data ss:Type="String">TestGame</Data></Cell>
+    <Cell><Data ss:Type="String">TestEngine</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="DateTime">1999-01-01T00:00:00.000</Data></Cell>
+    <Cell><Data ss:Type="String">PlayStation 2</Data></Cell>
+    <Cell><Data ss:Type="String">Valve Corporation</Data></Cell>
+    <Cell><Data ss:Type="String">RPG</Data></Cell>
+    <Cell><Data ss:Type="String">Polly</Data></Cell>
+    <Cell><Data ss:Type="String">BBFC</Data></Cell>
+    <Cell><Data ss:Type="Number">18</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">1</Data></Cell>
+    <Cell><Data ss:Type="String">TestGame</Data></Cell>
+    <Cell><Data ss:Type="String">TestEngine</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="DateTime">1999-01-01T00:00:00.000</Data></Cell>
+    <Cell><Data ss:Type="String">PlayStation 2</Data></Cell>
+    <Cell><Data ss:Type="String">Valve Corporation</Data></Cell>
+    <Cell><Data ss:Type="String">RPG</Data></Cell>
+    <Cell><Data ss:Type="String">Polly</Data></Cell>
+    <Cell><Data ss:Type="String">PEGI</Data></Cell>
+    <Cell><Data ss:Type="Number">18</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">1 game item{s)</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">2</Data></Cell>
+    <Cell><Data ss:Type="String">Dota 2</Data></Cell>
+    <Cell><Data ss:Type="String">Source 2</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="DateTime">2013-06-09T00:00:00.000</Data></Cell>
+    <Cell><Data ss:Type="String">Windows PC</Data></Cell>
+    <Cell><Data ss:Type="String">Valve Corporation</Data></Cell>
+    <Cell><Data ss:Type="String">MOBA</Data></Cell>
+    <Cell><Data ss:Type="String">Polly</Data></Cell>
+    <Cell><Data ss:Type="String">ACB</Data></Cell>
+    <Cell><Data ss:Type="String">MA15+</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">2</Data></Cell>
+    <Cell><Data ss:Type="String">Dota 2</Data></Cell>
+    <Cell><Data ss:Type="String">Source 2</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="DateTime">2013-06-09T00:00:00.000</Data></Cell>
+    <Cell><Data ss:Type="String">Windows PC</Data></Cell>
+    <Cell><Data ss:Type="String">Valve Corporation</Data></Cell>
+    <Cell><Data ss:Type="String">MOBA</Data></Cell>
+    <Cell><Data ss:Type="String">Polly</Data></Cell>
+    <Cell><Data ss:Type="String">ESRB</Data></Cell>
+    <Cell><Data ss:Type="String">M</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">2</Data></Cell>
+    <Cell><Data ss:Type="String">Dota 2</Data></Cell>
+    <Cell><Data ss:Type="String">Source 2</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="DateTime">2013-06-09T00:00:00.000</Data></Cell>
+    <Cell><Data ss:Type="String">Windows PC</Data></Cell>
+    <Cell><Data ss:Type="String">Valve Corporation</Data></Cell>
+    <Cell><Data ss:Type="String">MOBA</Data></Cell>
+    <Cell><Data ss:Type="String">Polly</Data></Cell>
+    <Cell><Data ss:Type="String">PEGI</Data></Cell>
+    <Cell><Data ss:Type="Number">18</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">0 game item{s)</Data></Cell>
+   </Row>
+  </Table>
+  <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <PageSetup>
+    <Header x:Margin="0.3"/>
+    <Footer x:Margin="0.3"/>
+    <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
+   </PageSetup>
+   <Selected/>
+   <ProtectObjects>False</ProtectObjects>
+   <ProtectScenarios>False</ProtectScenarios>
+  </WorksheetOptions>
+ </Worksheet>
+</Workbook>

@@ -1,0 +1,63 @@
+﻿@model IEnumerable<Game_items_selling_web.Models.Игры>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Игра)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Движок)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Дата_создания)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Жанры.Жанр)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Платформы.Платформа)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Разработчики.Разработчик)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Игра)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Движок)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Дата_создания)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Жанры.Жанр)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Платформы.Платформа)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Разработчики.Разработчик)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Код_игры }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Код_игры }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Код_игры })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,50 @@
+﻿@model Game_items_selling_web.Models.Чек
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Чек</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Дата)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Дата)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Кол_во_предметов)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Кол_во_предметов)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Предметы_из_игр.Игровой_предмет)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Предметы_из_игр.Игровой_предмет)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Торговые_площадки.Торговая_площадка)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Торговые_площадки.Торговая_площадка)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Код_чека }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

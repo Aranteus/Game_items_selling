@@ -1,0 +1,51 @@
+﻿@model IEnumerable<Game_items_selling_web.Models.Чек>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Дата)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Кол_во_предметов)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Предметы_из_игр.Игровой_предмет)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Торговые_площадки.Торговая_площадка)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Дата)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Кол_во_предметов)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Предметы_из_игр.Игровой_предмет)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Торговые_площадки.Торговая_площадка)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Код_чека }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Код_чека }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Код_чека })
+        </td>
+    </tr>
+}
+
+</table>

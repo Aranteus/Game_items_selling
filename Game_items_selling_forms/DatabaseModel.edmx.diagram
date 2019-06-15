@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="21204c8564fb4fe4b796d945b1ba25d1" Name="Diagram1" ZoomLevel="73">
+        <EntityTypeShape EntityType="Game_items_tradingModel.sysdiagram" Width="1.5" PointX="10.375" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Game_items_tradingModel.Валюты" Width="2" PointX="7.875" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Game_items_tradingModel.Возрастной_рейтинг" Width="2.125" PointX="0.5" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Game_items_tradingModel.Жанры" Width="1.5" PointX="0.5" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Game_items_tradingModel.Игры" Width="1.75" PointX="3.125" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Game_items_tradingModel.Издатель" Width="1.5" PointX="5.375" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Game_items_tradingModel.Платформы" Width="1.5" PointX="0.5" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Game_items_tradingModel.Предметы_из_игр" Width="2" PointX="5.375" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Game_items_tradingModel.Разработчики" Width="1.75" PointX="0.5" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="Game_items_tradingModel.Страны" Width="1.875" PointX="3" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Game_items_tradingModel.Торговые_площадки" Width="2.125" PointX="7.125" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Game_items_tradingModel.Чек" Width="1.75" PointX="7.875" PointY="2.75" IsExpanded="true" />
+        <AssociationConnector Association="Game_items_tradingModel.FK_Игры_Жанры" ManuallyRouted="false" />
+        <AssociationConnector Association="Game_items_tradingModel.FK_Игры_Платформы" ManuallyRouted="false" />
+        <AssociationConnector Association="Game_items_tradingModel.FK_Игры_Разработчики" ManuallyRouted="true" >
+          <ConnectorPoint PointX="2.25" PointY="6.0718128086156771" />
+          <ConnectorPoint PointX="2.6972866496373511" PointY="6.0718128086156771" />
+          <ConnectorPoint PointX="2.6972866496373511" PointY="5.5485157168216084" />
+          <ConnectorPoint PointX="3.6054140898101545" PointY="5.5485157168216084" />
+          <ConnectorPoint PointX="3.6054140898101545" PointY="4.0186979166666656" />
+        </AssociationConnector>
+        <AssociationConnector Association="Game_items_tradingModel.FK_Предметы_из_игр_Игры" ManuallyRouted="false" />
+        <AssociationConnector Association="Game_items_tradingModel.FK_Издатель_Страны" ManuallyRouted="false" />
+        <AssociationConnector Association="Game_items_tradingModel.FK_Чек_Предметы_из_игр" ManuallyRouted="false" />
+        <AssociationConnector Association="Game_items_tradingModel.FK_Торговые_площадки_Страны" ManuallyRouted="false" />
+        <AssociationConnector Association="Game_items_tradingModel.FK_Чек_Торговые_площадки" ManuallyRouted="false" />
+        <AssociationConnector Association="Game_items_tradingModel.Издатели_игр" ManuallyRouted="false" />
+        <AssociationConnector Association="Game_items_tradingModel.Рейтинг_игр" ManuallyRouted="false" />
+        <AssociationConnector Association="Game_items_tradingModel.FK_Предметы_из_игр_Валюты" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

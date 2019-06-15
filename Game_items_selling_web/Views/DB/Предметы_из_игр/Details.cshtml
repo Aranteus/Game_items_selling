@@ -1,0 +1,66 @@
+﻿@model Game_items_selling_web.Models.Предметы_из_игр
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Предметы_из_игр</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Игровой_предмет)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Игровой_предмет)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Цена)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Цена)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Редкость)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Редкость)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Количество)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Количество)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Валюты.Валюта)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Валюты.Валюта)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Игры.Игра)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Игры.Игра)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Код_предмета }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

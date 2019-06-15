@@ -1,0 +1,42 @@
+﻿@model Game_items_selling_web.Models.Разработчики
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Разработчики</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Разработчик)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Разработчик)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Дата_основания)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Дата_основания)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Кол_во_сотрудников)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Кол_во_сотрудников)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Код_разработчика }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

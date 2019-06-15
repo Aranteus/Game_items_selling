@@ -1,0 +1,26 @@
+﻿@model Game_items_selling_web.Models.Платформы
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Платформы</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Платформа)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Платформа)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Код_платформы }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

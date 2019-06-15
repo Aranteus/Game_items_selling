@@ -1,0 +1,42 @@
+﻿@model Game_items_selling_web.Models.Торговые_площадки
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Торговые_площадки</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Торговая_площадка)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Торговая_площадка)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Дата_создания)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Дата_создания)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Страны.Страна)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Страны.Страна)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Код_торговой_площадки }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

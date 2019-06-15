@@ -1,0 +1,26 @@
+﻿@model Game_items_selling_web.Models.Валюты
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Валюты</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Валюта)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Валюта)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Буквенный_код_валюты }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

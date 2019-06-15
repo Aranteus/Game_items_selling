@@ -1,0 +1,72 @@
+﻿@model Game_items_selling_web.Models.Предметы_из_игр
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Предметы_из_игр</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Игровой_предмет)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Игровой_предмет)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Цена)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Цена)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Редкость)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Редкость)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Количество)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Количество)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Валюты.Валюта)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Валюты.Валюта)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Игры.Игра)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Игры.Игра)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>
