@@ -1,7 +1,18 @@
 ﻿
 @{
     ViewBag.Title = "Administrator";
+    Layout = "~/Views/Shared/Adm_Layout.cshtml";
 }
+
 
 <h2>Administrator</h2>
 
+<div class="row">
+    <div class="col-md-4">
+        <p>
+            Log in as Administrator.
+        </p>
+        <p>@Html.ActionLink("Игры", "Index", "Игры")</p>
+    </div>
+    
+</div>

@@ -13,7 +13,7 @@ namespace Game_items_selling_web.Controllers
             return View();
         }
 
-        public ActionResult About()
+        public ActionResult Help()
         {
             ViewBag.Message = "Your application description page.";
 
@@ -34,6 +34,17 @@ namespace Game_items_selling_web.Controllers
         {
             return View();
         }
-
+        public ActionResult Adm_Help()
+        {
+            return View();
+        }
+        public ActionResult Dev_Help()
+        {
+            return View();
+        }
+        public ActionResult Trade_Help()
+        {
+            return View();
+        }
     }
 }

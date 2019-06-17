@@ -266,7 +266,7 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Help.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\DB\Валюты\Create.cshtml" />
     <Content Include="Views\DB\Валюты\Delete.cshtml" />
@@ -326,6 +326,12 @@
     <Content Include="Views\Home\Administrator.cshtml" />
     <Content Include="Views\Home\Trader.cshtml" />
     <Content Include="Views\Home\Developer.cshtml" />
+    <Content Include="Views\Shared\Adm_Layout.cshtml" />
+    <Content Include="Views\Shared\Dev_Layout.cshtml" />
+    <Content Include="Views\Shared\Trade_Layout.cshtml" />
+    <Content Include="Views\Home\Adm_Help.cshtml" />
+    <Content Include="Views\Home\Dev_Help.cshtml" />
+    <Content Include="Views\Home\Trade_Help.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
