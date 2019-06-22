@@ -39,9 +39,9 @@ namespace Game_items_selling_forms.Change
 
                 Database.Rows.Add(
                     trade.Код_торговой_площадки,
-                    trade.Название,
+                    trade.Торговая_площадка,
                     trade.Дата_создания,
-                    trade.Страны.Название,
+                    trade.Страны.Страна,
                     trade.Чек.Count);
             Database.Rows.Add();
         }
@@ -54,13 +54,13 @@ namespace Game_items_selling_forms.Change
         private void ChangeTraderMarket_Click(object sender, EventArgs e)
         {
             Торговые_площадки trader = entity.Торговые_площадки.FirstOrDefault(a => a.Код_торговой_площадки == trader_id);
-            if (TitleBox.Text != "") { trader.Название = TitleBox.Text; }
+            if (TitleBox.Text != "") { trader.Торговая_площадка = TitleBox.Text; }
             if (CountriesBox.Text != "")
             {
                 DataGridViewRow row = Database.SelectedRows[0];
                 if (row != null)
                 {
-                    Страны count = entity.Страны.FirstOrDefault(a => a.Название == CountriesBox.Text);
+                    Страны count = entity.Страны.FirstOrDefault(a => a.Страна == CountriesBox.Text);
                     trader.Страны = count;
                 }
             }

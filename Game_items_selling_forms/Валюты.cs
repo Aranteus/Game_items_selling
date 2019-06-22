@@ -21,7 +21,7 @@ namespace Game_items_selling_forms
         }
     
         public string Буквенный_код_валюты { get; set; }
-        public string Название { get; set; }
+        public string Валюта { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Предметы_из_игр> Предметы_из_игр { get; set; }

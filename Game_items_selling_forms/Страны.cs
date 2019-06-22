@@ -17,16 +17,16 @@ namespace Game_items_selling_forms
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Страны()
         {
-            this.Издатель = new HashSet<Издатель>();
             this.Торговые_площадки = new HashSet<Торговые_площадки>();
+            this.Издатели = new HashSet<Издатели>();
         }
     
         public string Буквенный_код_страны { get; set; }
-        public string Название { get; set; }
+        public string Страна { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Издатель> Издатель { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Торговые_площадки> Торговые_площадки { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Издатели> Издатели { get; set; }
     }
 }

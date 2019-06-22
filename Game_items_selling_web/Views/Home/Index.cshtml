@@ -26,3 +26,11 @@
         <p>@Html.ActionLink("Trader", "Trader", "Home")</p>
     </div>
 </div>
+@using (Html.BeginForm("Index", "Home", FormMethod.Post))
+{
+    <p>Введите логин: </p>
+    @Html.TextBox("login", "Введите имя")
+    <p>Введите пароль:</p>
+    @Html.TextBox("password", "Введите адрес")
+    <p><input type="submit" value="Log in"/></p>
+}

@@ -33,7 +33,7 @@ namespace Game_items_selling_forms
                         if (Int32.TryParse(mas[0], out int id) == true)
                         {
                             string name = mas[1];
-                            Торговые_площадки trader = entity.Торговые_площадки.FirstOrDefault(a => a.Код_торговой_площадки == id && a.Название == name);
+                            Торговые_площадки trader = entity.Торговые_площадки.FirstOrDefault(a => a.Код_торговой_площадки == id && a.Торговая_площадка == name);
                             if (trader != null)
                             {
                                 TraderForm traderform = new TraderForm(trader);

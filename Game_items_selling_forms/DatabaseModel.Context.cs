@@ -32,13 +32,13 @@ namespace Game_items_selling_forms
         public virtual DbSet<Возрастной_рейтинг> Возрастной_рейтинг { get; set; }
         public virtual DbSet<Жанры> Жанры { get; set; }
         public virtual DbSet<Игры> Игры { get; set; }
-        public virtual DbSet<Издатель> Издатель { get; set; }
         public virtual DbSet<Платформы> Платформы { get; set; }
         public virtual DbSet<Предметы_из_игр> Предметы_из_игр { get; set; }
         public virtual DbSet<Разработчики> Разработчики { get; set; }
         public virtual DbSet<Страны> Страны { get; set; }
         public virtual DbSet<Торговые_площадки> Торговые_площадки { get; set; }
         public virtual DbSet<Чек> Чек { get; set; }
+        public virtual DbSet<Издатели> Издатели { get; set; }
     
         public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
         {

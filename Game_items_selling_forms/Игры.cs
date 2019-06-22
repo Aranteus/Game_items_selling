@@ -18,8 +18,8 @@ namespace Game_items_selling_forms
         public Игры()
         {
             this.Предметы_из_игр = new HashSet<Предметы_из_игр>();
-            this.Издатель = new HashSet<Издатель>();
             this.Возрастной_рейтинг = new HashSet<Возрастной_рейтинг>();
+            this.Издатели = new HashSet<Издатели>();
         }
     
         public int Код_игры { get; set; }
@@ -27,8 +27,8 @@ namespace Game_items_selling_forms
         public int Код_жанра { get; set; }
         public int Код_платформы { get; set; }
         public string Движок { get; set; }
-        public string Название { get; set; }
         public System.DateTime Дата_создания { get; set; }
+        public string Игра { get; set; }
     
         public virtual Жанры Жанры { get; set; }
         public virtual Платформы Платформы { get; set; }
@@ -36,8 +36,8 @@ namespace Game_items_selling_forms
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Предметы_из_игр> Предметы_из_игр { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Издатель> Издатель { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Возрастной_рейтинг> Возрастной_рейтинг { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Издатели> Издатели { get; set; }
     }
 }

@@ -73,7 +73,7 @@ namespace Game_items_selling_forms.Admin
         private void AddGameButton_Click(object sender, EventArgs e)
         {
             string publtitle;
-            Издатель publ;
+            Издатели publ;
             Возрастной_рейтинг agerating;
             if (id == -1) id = Convert.ToInt32(row.Cells[0].Value);
             Разработчики dev = entity.Разработчики.FirstOrDefault(a => a.Код_разработчика == id);
@@ -86,20 +86,20 @@ namespace Game_items_selling_forms.Admin
             {
                 if (DatetimeGameBox.Value <= DateTime.Now && dev.Дата_основания <= DatetimeGameBox.Value)
                 {                  
-                    Жанры genre = entity.Жанры.FirstOrDefault(a => a.Название == GenreBox.Text);
-                    Платформы platform = entity.Платформы.FirstOrDefault(a => a.Название == PlatformBox.Text);
-                    Страны country = entity.Страны.FirstOrDefault(a => a.Название == PublCountry.Text);
+                    Жанры genre = entity.Жанры.FirstOrDefault(a => a.Жанр == GenreBox.Text);
+                    Платформы platform = entity.Платформы.FirstOrDefault(a => a.Платформа == PlatformBox.Text);
+                    Страны country = entity.Страны.FirstOrDefault(a => a.Страна == PublCountry.Text);
 
                     if (NewPubl.Checked == true)
                     {
                         publtitle = PublBox.Text;
-                        publ = new Издатель
+                        publ = new Издатели
                         {
                             Страны = country,
-                            Название = publtitle
+                            Издатели = publtitle
                         };
                     }
-                    else { publ = entity.Издатель.FirstOrDefault(a => a.Название == PublComboBox.Text); }
+                    else { publ = entity.Издатели.FirstOrDefault(a => a.Издатели == PublComboBox.Text); }
 
                     if (NewTitleRating.Checked == true)
                     {
@@ -113,12 +113,12 @@ namespace Game_items_selling_forms.Admin
                     Игры game = new Игры
                     {
                         Дата_создания = DatetimeGameBox.Value,
-                        Название = GameTitleBox.Text,
+                        Игра = GameTitleBox.Text,
                         Жанры = genre,
                         Платформы = platform,
                         Движок = Engine.Text
                     };
-                    game.Издатель.Add(publ);
+                    game.Издатели.Add(publ);
                     game.Возрастной_рейтинг.Add(agerating);
                     dev.Игры.Add(game);
                     entity.SaveChanges();

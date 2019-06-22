@@ -21,9 +21,9 @@ namespace Game_items_selling_forms
         }
     
         public int Код_торговой_площадки { get; set; }
-        public string Название { get; set; }
         public System.DateTime Дата_создания { get; set; }
         public string Код_страны { get; set; }
+        public string Торговая_площадка { get; set; }
     
         public virtual Страны Страны { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

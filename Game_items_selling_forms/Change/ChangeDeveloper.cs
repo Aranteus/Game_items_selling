@@ -40,7 +40,7 @@ namespace Game_items_selling_forms.Change
 
                 Database.Rows.Add(
                     dev.Код_разработчика,
-                    dev.Название,
+                    dev.Разработчик,
                     dev.Дата_основания,
                     dev.Кол_во_сотрудников,
                     dev.Игры.Count);            
@@ -54,7 +54,7 @@ namespace Game_items_selling_forms.Change
         private void ChangeDeveloperButton_Click(object sender, EventArgs e)
         {
             Разработчики dev = entity.Разработчики.FirstOrDefault(a => a.Код_разработчика == dev_id);
-            if (TitleBox.Text != "") { dev.Название = TitleBox.Text; }
+            if (TitleBox.Text != "") { dev.Разработчик = TitleBox.Text; }
             if (DatetimeBox.Value < DateTime.Now)
             {
                 dev.Дата_основания = DatetimeBox.Value;

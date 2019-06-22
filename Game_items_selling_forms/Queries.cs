@@ -17,7 +17,7 @@ namespace Game_items_selling_forms
 
             foreach (Страны country in entity.Страны)
             {
-                c.Add(country.Название);
+                c.Add(country.Страна);
             }
             c.Sort();
             return c.ToArray();
@@ -28,7 +28,7 @@ namespace Game_items_selling_forms
 
             foreach (Валюты curr in entity.Валюты)
             {
-                c.Add(curr.Название);
+                c.Add(curr.Валюта);
             }
             c.Sort();
             return c.ToArray();
@@ -39,7 +39,7 @@ namespace Game_items_selling_forms
 
             foreach (Жанры genre in entity.Жанры)
             {
-                c.Add(genre.Название);
+                c.Add(genre.Жанр);
             }
             return c.ToArray();
         }
@@ -49,7 +49,7 @@ namespace Game_items_selling_forms
 
             foreach (Платформы platform in entity.Платформы)
             {
-                c.Add(platform.Название);
+                c.Add(platform.Платформа);
             }
             return c.ToArray();
         }
@@ -57,9 +57,9 @@ namespace Game_items_selling_forms
         {
             List<object> c = new List<object>();
 
-            foreach (Издатель publ in entity.Издатель)
+            foreach (Издатели publ in entity.Издатели)
             {
-                c.Add(publ.Название);
+                c.Add(publ.Издатели);
             }
             return c.ToArray();
         }

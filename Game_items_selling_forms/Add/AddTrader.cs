@@ -35,11 +35,11 @@ namespace Game_items_selling_forms.Admin
             {
                 if (DatetimeBox.Value <= DateTime.Now)
                 {
-                    Страны country = entity.Страны.FirstOrDefault(a => a.Название == CountriesBox.Text);
+                    Страны country = entity.Страны.FirstOrDefault(a => a.Страна == CountriesBox.Text);
                     Торговые_площадки trademarket = new Торговые_площадки
                     {
                         Дата_создания = DatetimeBox.Value,
-                        Название = TitleBox.Text,
+                        Торговая_площадка = TitleBox.Text,
                         Страны = country
                     };
 
@@ -47,7 +47,7 @@ namespace Game_items_selling_forms.Admin
                     entity.SaveChanges();
                     if (reg == true)
                     {
-                        string login = trademarket.Код_торговой_площадки.ToString() + "_" + trademarket.Название.ToString();
+                        string login = trademarket.Код_торговой_площадки.ToString() + "_" + trademarket.Торговая_площадка.ToString();
                         string password = "trader";
                         MessageBox.Show($"Запомните следующие данные!\nВаш логин: {login}\nВаш пароль: {password}");
                     }

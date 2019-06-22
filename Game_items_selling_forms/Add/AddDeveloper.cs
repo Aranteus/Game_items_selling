@@ -34,7 +34,7 @@ namespace Game_items_selling_forms.Admin
         private void AddDeveloperButton_Click(object sender, EventArgs e)
         {
             string publtitle;
-            Издатель publ;
+            Издатели publ;
             Возрастной_рейтинг agerating;
 
             if (TitleBox.Text != "" && DatetimeBox.Value != null && EmpCount.Value >= 0 &&
@@ -49,24 +49,24 @@ namespace Game_items_selling_forms.Admin
                     Разработчики developer = new Разработчики
                     {
                         Дата_основания = DatetimeBox.Value,
-                        Название = TitleBox.Text,
+                        Разработчик = TitleBox.Text,
                         Кол_во_сотрудников = (int)EmpCount.Value,
                     };
 
-                    Жанры genre = entity.Жанры.FirstOrDefault(a => a.Название == GenreBox.Text);
-                    Платформы platform = entity.Платформы.FirstOrDefault(a => a.Название == PlatformBox.Text);
-                    Страны country = entity.Страны.FirstOrDefault(a => a.Название == PublCountry.Text);
+                    Жанры genre = entity.Жанры.FirstOrDefault(a => a.Жанр == GenreBox.Text);
+                    Платформы platform = entity.Платформы.FirstOrDefault(a => a.Платформа == PlatformBox.Text);
+                    Страны country = entity.Страны.FirstOrDefault(a => a.Страна == PublCountry.Text);
 
                     if (NewPubl.Checked == true)
                     {
                         publtitle = PublBox.Text;
-                        publ = new Издатель
+                        publ = new Издатели
                         {
                             Страны = country,
-                            Название = publtitle
+                            Издатели = publtitle
                         };
                     }
-                    else { publ = entity.Издатель.FirstOrDefault(a => a.Название == PublComboBox.Text); }
+                    else { publ = entity.Издатели.FirstOrDefault(a => a.Издатели == PublComboBox.Text); }
 
                     if (NewTitleRating.Checked == true)
                     {
@@ -80,19 +80,19 @@ namespace Game_items_selling_forms.Admin
                     Игры game = new Игры
                     {
                         Дата_создания = DatetimeGameBox.Value,
-                        Название = GameTitleBox.Text,
+                        Игра = GameTitleBox.Text,
                         Жанры = genre,
                         Платформы = platform,
                         Движок = Engine.Text
                     };
-                    game.Издатель.Add(publ);
+                    game.Издатели.Add(publ);
                     game.Возрастной_рейтинг.Add(agerating);
                     developer.Игры.Add(game);
                     entity.Разработчики.Add(developer);
                     entity.SaveChanges();
                     if (reg == true)
                     {
-                        string login = developer.Код_разработчика.ToString() + "_" + developer.Название.ToString();
+                        string login = developer.Код_разработчика.ToString() + "_" + developer.Разработчик.ToString();
                         string password = "developer";
                         MessageBox.Show($"Запомните следующие данные!\nВаш логин: {login}\nВаш пароль: {password}");
                     }

@@ -21,7 +21,7 @@ namespace Game_items_selling_forms
         }
     
         public int Код_платформы { get; set; }
-        public string Название { get; set; }
+        public string Платформа { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Игры> Игры { get; set; }

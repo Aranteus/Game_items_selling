@@ -12,16 +12,16 @@ namespace Game_items_selling_forms
     using System;
     using System.Collections.Generic;
     
-    public partial class Издатель
+    public partial class Издатели
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Издатель()
+        public Издатели()
         {
             this.Игры = new HashSet<Игры>();
         }
     
         public int Код_издателя { get; set; }
-        public string Название { get; set; }
+        public string Издатели { get; set; }
         public string Код_страны { get; set; }
     
         public virtual Страны Страны { get; set; }

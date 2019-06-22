@@ -46,5 +46,15 @@ namespace Game_items_selling_web.Controllers
         {
             return View();
         }
+        [HttpPost]
+        public ActionResult Index(string login, string password)
+        {
+            if (login == "admin" && password == "admin")
+            {
+                return RedirectToAction("Administrator", "Home");
+            }
+            else { }
+            return HttpNotFound("Логин или пароль введены неверно");
+        }
     }
 }

@@ -15,8 +15,8 @@
     <EntitySetMapping Name="Валюты">
       <EntityTypeMapping TypeName="Game_items_tradingModel.Валюты">
         <MappingFragment StoreEntitySet="Валюты">
+          <ScalarProperty Name="Валюта" ColumnName="Валюта" />
           <ScalarProperty Name="Буквенный_код_валюты" ColumnName="Буквенный код валюты" />
-          <ScalarProperty Name="Название" ColumnName="Название" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -32,47 +32,38 @@
     <EntitySetMapping Name="Жанры">
       <EntityTypeMapping TypeName="Game_items_tradingModel.Жанры">
         <MappingFragment StoreEntitySet="Жанры">
+          <ScalarProperty Name="Жанр" ColumnName="Жанр" />
           <ScalarProperty Name="Код_жанра" ColumnName="Код жанра" />
-          <ScalarProperty Name="Название" ColumnName="Название" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Игры">
       <EntityTypeMapping TypeName="Game_items_tradingModel.Игры">
         <MappingFragment StoreEntitySet="Игры">
+          <ScalarProperty Name="Игра" ColumnName="Игра" />
           <ScalarProperty Name="Код_игры" ColumnName="Код игры" />
           <ScalarProperty Name="Код_разработчика" ColumnName="Код разработчика" />
           <ScalarProperty Name="Код_жанра" ColumnName="Код жанра" />
           <ScalarProperty Name="Код_платформы" ColumnName="Код платформы" />
           <ScalarProperty Name="Движок" ColumnName="Движок" />
-          <ScalarProperty Name="Название" ColumnName="Название" />
           <ScalarProperty Name="Дата_создания" ColumnName="Дата создания" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Издатель">
-      <EntityTypeMapping TypeName="Game_items_tradingModel.Издатель">
-        <MappingFragment StoreEntitySet="Издатель">
-          <ScalarProperty Name="Код_издателя" ColumnName="Код издателя" />
-          <ScalarProperty Name="Название" ColumnName="Название" />
-          <ScalarProperty Name="Код_страны" ColumnName="Код страны" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Платформы">
       <EntityTypeMapping TypeName="Game_items_tradingModel.Платформы">
         <MappingFragment StoreEntitySet="Платформы">
+          <ScalarProperty Name="Платформа" ColumnName="Платформа" />
           <ScalarProperty Name="Код_платформы" ColumnName="Код платформы" />
-          <ScalarProperty Name="Название" ColumnName="Название" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Предметы_из_игр">
       <EntityTypeMapping TypeName="Game_items_tradingModel.Предметы_из_игр">
         <MappingFragment StoreEntitySet="Предметы из игр">
+          <ScalarProperty Name="Игровой_предмет" ColumnName="Игровой предмет" />
           <ScalarProperty Name="Код_предмета" ColumnName="Код предмета" />
           <ScalarProperty Name="Код_игры" ColumnName="Код игры" />
-          <ScalarProperty Name="Название" ColumnName="Название" />
           <ScalarProperty Name="Буквенный_код_валюты" ColumnName="Буквенный код валюты" />
           <ScalarProperty Name="Цена" ColumnName="Цена" />
           <ScalarProperty Name="Редкость" ColumnName="Редкость" />
@@ -83,8 +74,8 @@
     <EntitySetMapping Name="Разработчики">
       <EntityTypeMapping TypeName="Game_items_tradingModel.Разработчики">
         <MappingFragment StoreEntitySet="Разработчики">
+          <ScalarProperty Name="Разработчик" ColumnName="Разработчик" />
           <ScalarProperty Name="Код_разработчика" ColumnName="Код разработчика" />
-          <ScalarProperty Name="Название" ColumnName="Название" />
           <ScalarProperty Name="Дата_основания" ColumnName="Дата основания" />
           <ScalarProperty Name="Кол_во_сотрудников" ColumnName="Кол-во сотрудников" />
         </MappingFragment>
@@ -93,16 +84,16 @@
     <EntitySetMapping Name="Страны">
       <EntityTypeMapping TypeName="Game_items_tradingModel.Страны">
         <MappingFragment StoreEntitySet="Страны">
+          <ScalarProperty Name="Страна" ColumnName="Страна" />
           <ScalarProperty Name="Буквенный_код_страны" ColumnName="Буквенный код страны" />
-          <ScalarProperty Name="Название" ColumnName="Название" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Торговые_площадки">
       <EntityTypeMapping TypeName="Game_items_tradingModel.Торговые_площадки">
         <MappingFragment StoreEntitySet="Торговые площадки">
+          <ScalarProperty Name="Торговая_площадка" ColumnName="Торговая площадка" />
           <ScalarProperty Name="Код_торговой_площадки" ColumnName="Код торговой площадки" />
-          <ScalarProperty Name="Название" ColumnName="Название" />
           <ScalarProperty Name="Дата_создания" ColumnName="Дата создания" />
           <ScalarProperty Name="Код_страны" ColumnName="Код страны" />
         </MappingFragment>
@@ -119,14 +110,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <AssociationSetMapping Name="Издатели_игр" TypeName="Game_items_tradingModel.Издатели_игр" StoreEntitySet="Издатели игр">
-      <EndProperty Name="Игры">
-        <ScalarProperty Name="Код_игры" ColumnName="Код игры" />
-      </EndProperty>
-      <EndProperty Name="Издатель">
-        <ScalarProperty Name="Код_издателя" ColumnName="Код издателя" />
-      </EndProperty>
-    </AssociationSetMapping>
     <AssociationSetMapping Name="Рейтинг_игр" TypeName="Game_items_tradingModel.Рейтинг_игр" StoreEntitySet="Рейтинг игр">
       <EndProperty Name="Возрастной_рейтинг">
         <ScalarProperty Name="Код_возрастного_рейтинга" ColumnName="Код возрастного рейтинга" />
@@ -159,5 +142,22 @@
     </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="Хранилище Game_items_tradingModel.sp_renamediagram" />
     <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="Хранилище Game_items_tradingModel.sp_upgraddiagrams" />
+    <EntitySetMapping Name="Издатели">
+      <EntityTypeMapping TypeName="Game_items_tradingModel.Издатели">
+        <MappingFragment StoreEntitySet="Издатели">
+          <ScalarProperty Name="Код_страны" ColumnName="Код страны" />
+          <ScalarProperty Name="Издатель" ColumnName="Издатель" />
+          <ScalarProperty Name="Код_издателя" ColumnName="Код издателя" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="Издатели_игр1" TypeName="Game_items_tradingModel.Издатели_игр1" StoreEntitySet="Издатели игр">
+      <EndProperty Name="Издатели">
+        <ScalarProperty Name="Код_издателя" ColumnName="Код издателя" />
+      </EndProperty>
+      <EndProperty Name="Игры">
+        <ScalarProperty Name="Код_игры" ColumnName="Код игры" />
+      </EndProperty>
+    </AssociationSetMapping>
   </EntityContainerMapping>
 </Mapping>

@@ -47,7 +47,7 @@ namespace Game_items_selling_forms
                         if (Int32.TryParse(mas[0], out int id) == true)
                         {
                             string name = mas[1];
-                            Разработчики dev = entity.Разработчики.FirstOrDefault(a => a.Код_разработчика == id && a.Название == name);
+                            Разработчики dev = entity.Разработчики.FirstOrDefault(a => a.Код_разработчика == id && a.Разработчик == name);
                             if (dev != null)
                             {
                                 DeveloperForm devform = new DeveloperForm(dev);

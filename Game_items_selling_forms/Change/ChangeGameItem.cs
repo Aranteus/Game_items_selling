@@ -43,12 +43,12 @@ namespace Game_items_selling_forms.Change
 
                 Database.Rows.Add(
                     item.Код_предмета,
-                    item.Название,
+                    item.Игровой_предмет,
                     item.Редкость,
-                    item.Валюты.Название,
+                    item.Валюты.Валюта,
                     item.Цена,
                     item.Количество,
-                    item.Игры.Название,
+                    item.Игры.Игра,
                     item.Чек.Count);
             Database.Rows.Add();
         }
@@ -61,13 +61,13 @@ namespace Game_items_selling_forms.Change
         private void ChangeGameItemButton_Click(object sender, EventArgs e)
         {
             Предметы_из_игр gameitem = entity.Предметы_из_игр.FirstOrDefault(a => a.Код_предмета == gameitem_id);
-            if (GameItemTitleBox.Text != "") { gameitem.Название = GameItemTitleBox.Text; }
+            if (GameItemTitleBox.Text != "") { gameitem.Игровой_предмет = GameItemTitleBox.Text; }
             if (CurrencyBox.Text != "")
             {
                 DataGridViewRow row = Database.SelectedRows[0];
                 if (row != null)
                 {
-                    Валюты curr = entity.Валюты.FirstOrDefault(a => a.Название == CurrencyBox.Text);
+                    Валюты curr = entity.Валюты.FirstOrDefault(a => a.Валюта == CurrencyBox.Text);
                     gameitem.Валюты = curr;
                 }
             }

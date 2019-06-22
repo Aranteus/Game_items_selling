@@ -22,7 +22,7 @@ namespace Game_items_selling_forms.Trader
         {
             InitializeComponent();
             maintrader = trader;
-            TraderName.Text = trader.Название;
+            TraderName.Text = trader.Торговая_площадка;
         }
 
         private void ВыходВМенюАвторизацииToolStripMenuItem_Click(object sender, EventArgs e)
@@ -72,14 +72,14 @@ namespace Game_items_selling_forms.Trader
                     {
                         Database.Rows.Add(
                             order.Код_чека,
-                            order.Торговые_площадки.Название,
-                            order.Предметы_из_игр.Название,
-                            order.Предметы_из_игр.Игры.Название,
-                            order.Предметы_из_игр.Игры.Разработчики.Название,
+                            order.Торговые_площадки.Торговая_площадка,
+                            order.Предметы_из_игр.Игровой_предмет,
+                            order.Предметы_из_игр.Игры.Игра,
+                            order.Предметы_из_игр.Игры.Разработчики.Разработчик,
                             order.Дата,
                             order.Кол_во_предметов,
                             order.Кол_во_предметов * order.Предметы_из_игр.Цена,
-                            order.Предметы_из_игр.Валюты.Название);
+                            order.Предметы_из_игр.Валюты.Валюта);
                     }
                 }
             }    
@@ -186,12 +186,12 @@ namespace Game_items_selling_forms.Trader
             {
                 Database.Rows.Add(
                     item.Код_предмета,
-                    item.Название,
+                    item.Игровой_предмет,
                     item.Редкость,
-                    item.Валюты.Название,
+                    item.Валюты.Валюта,
                     item.Цена,
                     item.Количество,
-                    item.Игры.Название,
+                    item.Игры.Игра,
                     item.Чек.Count);
             }
         }
@@ -199,11 +199,11 @@ namespace Game_items_selling_forms.Trader
         private void Change_Click(object sender, EventArgs e)
         {
             Game_items_tradingEnt entity = new Game_items_tradingEnt();
-            string name = maintrader.Название;
+            string name = maintrader.Торговая_площадка;
             ChangeTrader changeTrader = new ChangeTrader(maintrader.Код_торговой_площадки);
             changeTrader.ShowDialog();
             maintrader = entity.Торговые_площадки.FirstOrDefault(a => a.Код_торговой_площадки == maintrader.Код_торговой_площадки);
-            if (maintrader.Название != name) { MessageBox.Show($"Внимание! Ваш логин изменился!\nВаш новый логин: {maintrader.Код_торговой_площадки}_{maintrader.Название}"); }
+            if (maintrader.Торговая_площадка != name) { MessageBox.Show($"Внимание! Ваш логин изменился!\nВаш новый логин: {maintrader.Код_торговой_площадки}_{maintrader.Торговая_площадка}"); }
         }
 
         private void СправкаToolStripMenuItem_Click(object sender, EventArgs e)

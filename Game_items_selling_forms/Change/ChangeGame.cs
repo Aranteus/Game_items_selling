@@ -36,28 +36,28 @@ namespace Game_items_selling_forms.Change
         private void ChangeGameButton_Click(object sender, EventArgs e)
         {
             Игры game = entity.Игры.FirstOrDefault(a => a.Код_игры == game_id);
-            if (GameTitleBox.Text != "") { game.Название = GameTitleBox.Text; }
+            if (GameTitleBox.Text != "") { game.Игра = GameTitleBox.Text; }
             if (GenreBox.Text != "")
             {
-                Жанры genre = entity.Жанры.FirstOrDefault(a => a.Название == GenreBox.Text);
+                Жанры genre = entity.Жанры.FirstOrDefault(a => a.Жанр == GenreBox.Text);
                 game.Жанры = genre;
             }
             if (PlatformBox.Text != "")
             {
-                Платформы plarform = entity.Платформы.FirstOrDefault(a => a.Название == PlatformBox.Text);
+                Платформы plarform = entity.Платформы.FirstOrDefault(a => a.Платформа == PlatformBox.Text);
                 game.Платформы = plarform;
             }
             if (NewPubl.Checked == true)
             {
                 if (PublBox.Text != "" && PublCountry.Text != "")
                 {
-                    Страны country = entity.Страны.FirstOrDefault(a => a.Название == PublCountry.Text);
-                    Издатель publ = new Издатель
+                    Страны country = entity.Страны.FirstOrDefault(a => a.Страна == PublCountry.Text);
+                    Издатели publ = new Издатели
                     {
-                        Название = PublBox.Text,
+                        Издатели = PublBox.Text,
                         Страны = country
                     };
-                    game.Издатель.Add(publ);
+                    game.Издатели.Add(publ);
                 }
                 else MessageBox.Show("Новый издатель не добавлен, так как не все поля заполнены");
             }
@@ -69,11 +69,11 @@ namespace Game_items_selling_forms.Change
                     if (row != null)
                     {
                         string publ_name = row.Cells[7].ToString();
-                        Издатель publ = game.Издатель.FirstOrDefault(a => a.Название == publ_name);
-                        game.Издатель.Remove(publ);
+                        Издатели publ = game.Издатели.FirstOrDefault(a => a.Издатели == publ_name);
+                        game.Издатели.Remove(publ);
                     }
-                    Издатель newpubl = entity.Издатель.FirstOrDefault(a => a.Название == PublComboBox.Text);
-                    game.Издатель.Add(newpubl);                   
+                    Издатели newpubl = entity.Издатели.FirstOrDefault(a => a.Издатели == PublComboBox.Text);
+                    game.Издатели.Add(newpubl);                   
                 }
             }
             if (Engine.Text != "") { game.Движок = Engine.Text; }
@@ -125,24 +125,24 @@ namespace Game_items_selling_forms.Change
             Database.Columns[4].Name = "Платформа";
             Database.Columns[5].Name = "Разработчик";
             Database.Columns[6].Name = "Жанр";
-            Database.Columns[7].Name = "Издатель";
+            Database.Columns[7].Name = "Издатели";
             Database.Columns[8].Name = "Название рейтинга";
             Database.Columns[9].Name = "Рейтинг";
             Database.Columns[10].Name = "Кол-во игр";
 
-                foreach (Издатель p in game.Издатель)
+                foreach (Издатели p in game.Издатели)
                 {
                     foreach (Возрастной_рейтинг r in game.Возрастной_рейтинг)
                     {
                         Database.Rows.Add(
                         game.Код_игры,
-                        game.Название,
+                        game.Игра,
                         game.Движок,
                         game.Дата_создания,
-                        game.Платформы.Название,
-                        game.Разработчики.Название,
-                        game.Жанры.Название,
-                        p.Название,
+                        game.Платформы.Платформа,
+                        game.Разработчики.Разработчик,
+                        game.Жанры.Жанр,
+                        p.Издатели,
                         r.Название_рейтинга,
                         r.Рейтинг,
                         game.Предметы_из_игр.Count());                       

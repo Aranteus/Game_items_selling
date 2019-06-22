@@ -15,8 +15,8 @@
       <PropertyRef Name="Буквенный_код_валюты" />
     </Key>
     <Property Name="Буквенный_код_валюты" Type="String" MaxLength="3" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="Название" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
     <NavigationProperty Name="Предметы_из_игр" Relationship="Game_items_tradingModel.FK_Предметы_из_игр_Валюты" FromRole="Валюты" ToRole="Предметы_из_игр" />
+    <Property Name="Валюта" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="Возрастной_рейтинг">
     <Key>
@@ -32,8 +32,8 @@
       <PropertyRef Name="Код_жанра" />
     </Key>
     <Property Name="Код_жанра" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Название" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
     <NavigationProperty Name="Игры" Relationship="Self.FK_Игры_Жанры" FromRole="Жанры" ToRole="Игры" />
+    <Property Name="Жанр" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="Игры">
     <Key>
@@ -44,32 +44,22 @@
     <Property Name="Код_жанра" Type="Int32" Nullable="false" />
     <Property Name="Код_платформы" Type="Int32" Nullable="false" />
     <Property Name="Движок" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="Название" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="Дата_создания" Type="DateTime" Nullable="false" Precision="0" />
     <NavigationProperty Name="Жанры" Relationship="Self.FK_Игры_Жанры" FromRole="Игры" ToRole="Жанры" />
     <NavigationProperty Name="Платформы" Relationship="Self.FK_Игры_Платформы" FromRole="Игры" ToRole="Платформы" />
     <NavigationProperty Name="Разработчики" Relationship="Self.FK_Игры_Разработчики" FromRole="Игры" ToRole="Разработчики" />
     <NavigationProperty Name="Предметы_из_игр" Relationship="Self.FK_Предметы_из_игр_Игры" FromRole="Игры" ToRole="Предметы_из_игр" />
-    <NavigationProperty Name="Издатель" Relationship="Self.Издатели_игр" FromRole="Игры" ToRole="Издатель" />
     <NavigationProperty Name="Возрастной_рейтинг" Relationship="Self.Рейтинг_игр" FromRole="Игры" ToRole="Возрастной_рейтинг" />
-  </EntityType>
-  <EntityType Name="Издатель">
-    <Key>
-      <PropertyRef Name="Код_издателя" />
-    </Key>
-    <Property Name="Код_издателя" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Название" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="Код_страны" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
-    <NavigationProperty Name="Страны" Relationship="Self.FK_Издатель_Страны" FromRole="Издатель" ToRole="Страны" />
-    <NavigationProperty Name="Игры" Relationship="Self.Издатели_игр" FromRole="Издатель" ToRole="Игры" />
+    <Property Name="Игра" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Издатели" Relationship="Game_items_tradingModel.Издатели_игр1" FromRole="Игры" ToRole="Издатели" />
   </EntityType>
   <EntityType Name="Платформы">
     <Key>
       <PropertyRef Name="Код_платформы" />
     </Key>
     <Property Name="Код_платформы" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Название" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
     <NavigationProperty Name="Игры" Relationship="Self.FK_Игры_Платформы" FromRole="Платформы" ToRole="Игры" />
+    <Property Name="Платформа" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="Предметы_из_игр">
     <Key>
@@ -77,7 +67,6 @@
     </Key>
     <Property Name="Код_предмета" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Код_игры" Type="Int32" Nullable="false" />
-    <Property Name="Название" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="Буквенный_код_валюты" Type="String" MaxLength="3" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="Цена" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
     <Property Name="Редкость" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
@@ -85,36 +74,37 @@
     <NavigationProperty Name="Игры" Relationship="Self.FK_Предметы_из_игр_Игры" FromRole="Предметы_из_игр" ToRole="Игры" />
     <NavigationProperty Name="Чек" Relationship="Self.FK_Чек_Предметы_из_игр" FromRole="Предметы_из_игр" ToRole="Чек" />
     <NavigationProperty Name="Валюты" Relationship="Game_items_tradingModel.FK_Предметы_из_игр_Валюты" FromRole="Предметы_из_игр" ToRole="Валюты" />
+    <Property Name="Игровой_предмет" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="Разработчики">
     <Key>
       <PropertyRef Name="Код_разработчика" />
     </Key>
     <Property Name="Код_разработчика" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Название" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="Дата_основания" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="Кол_во_сотрудников" Type="Int32" Nullable="false" />
     <NavigationProperty Name="Игры" Relationship="Self.FK_Игры_Разработчики" FromRole="Разработчики" ToRole="Игры" />
+    <Property Name="Разработчик" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="Страны">
     <Key>
       <PropertyRef Name="Буквенный_код_страны" />
     </Key>
-    <Property Name="Буквенный_код_страны" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
-    <Property Name="Название" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
-    <NavigationProperty Name="Издатель" Relationship="Self.FK_Издатель_Страны" FromRole="Страны" ToRole="Издатель" />
+    <Property Name="Буквенный_код_страны" Type="String" MaxLength="3" FixedLength="false" Unicode="true" Nullable="false" />
     <NavigationProperty Name="Торговые_площадки" Relationship="Self.FK_Торговые_площадки_Страны" FromRole="Страны" ToRole="Торговые_площадки" />
+    <Property Name="Страна" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Издатели" Relationship="Game_items_tradingModel.FK_Издатель_Страны1" FromRole="Страны" ToRole="Издатели" />
   </EntityType>
   <EntityType Name="Торговые_площадки">
     <Key>
       <PropertyRef Name="Код_торговой_площадки" />
     </Key>
     <Property Name="Код_торговой_площадки" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Название" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="Дата_создания" Type="DateTime" Nullable="false" Precision="0" />
-    <Property Name="Код_страны" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Код_страны" Type="String" MaxLength="3" FixedLength="false" Unicode="true" Nullable="false" />
     <NavigationProperty Name="Страны" Relationship="Self.FK_Торговые_площадки_Страны" FromRole="Торговые_площадки" ToRole="Страны" />
     <NavigationProperty Name="Чек" Relationship="Self.FK_Чек_Торговые_площадки" FromRole="Торговые_площадки" ToRole="Чек" />
+    <Property Name="Торговая_площадка" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="Чек">
     <Key>
@@ -184,20 +174,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Издатель_Страны">
-    <End Role="Страны" Type="Self.Страны" Multiplicity="1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Role="Издатель" Type="Self.Издатель" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Страны">
-        <PropertyRef Name="Буквенный_код_страны" />
-      </Principal>
-      <Dependent Role="Издатель">
-        <PropertyRef Name="Код_страны" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_Чек_Предметы_из_игр">
     <End Role="Предметы_из_игр" Type="Self.Предметы_из_игр" Multiplicity="1">
       <OnDelete Action="Cascade" />
@@ -240,10 +216,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="Издатели_игр">
-    <End Role="Игры" Type="Self.Игры" Multiplicity="*" />
-    <End Role="Издатель" Type="Self.Издатель" Multiplicity="*" />
-  </Association>
   <Association Name="Рейтинг_игр">
     <End Role="Возрастной_рейтинг" Type="Self.Возрастной_рейтинг" Multiplicity="*" />
     <End Role="Игры" Type="Self.Игры" Multiplicity="*" />
@@ -254,7 +226,6 @@
     <EntitySet Name="Возрастной_рейтинг" EntityType="Self.Возрастной_рейтинг" />
     <EntitySet Name="Жанры" EntityType="Self.Жанры" />
     <EntitySet Name="Игры" EntityType="Self.Игры" />
-    <EntitySet Name="Издатель" EntityType="Self.Издатель" />
     <EntitySet Name="Платформы" EntityType="Self.Платформы" />
     <EntitySet Name="Предметы_из_игр" EntityType="Self.Предметы_из_игр" />
     <EntitySet Name="Разработчики" EntityType="Self.Разработчики" />
@@ -277,10 +248,6 @@
       <End Role="Игры" EntitySet="Игры" />
       <End Role="Предметы_из_игр" EntitySet="Предметы_из_игр" />
     </AssociationSet>
-    <AssociationSet Name="FK_Издатель_Страны" Association="Self.FK_Издатель_Страны">
-      <End Role="Страны" EntitySet="Страны" />
-      <End Role="Издатель" EntitySet="Издатель" />
-    </AssociationSet>
     <AssociationSet Name="FK_Чек_Предметы_из_игр" Association="Self.FK_Чек_Предметы_из_игр">
       <End Role="Предметы_из_игр" EntitySet="Предметы_из_игр" />
       <End Role="Чек" EntitySet="Чек" />
@@ -292,10 +259,6 @@
     <AssociationSet Name="FK_Чек_Торговые_площадки" Association="Self.FK_Чек_Торговые_площадки">
       <End Role="Торговые_площадки" EntitySet="Торговые_площадки" />
       <End Role="Чек" EntitySet="Чек" />
-    </AssociationSet>
-    <AssociationSet Name="Издатели_игр" Association="Self.Издатели_игр">
-      <End Role="Игры" EntitySet="Игры" />
-      <End Role="Издатель" EntitySet="Издатель" />
     </AssociationSet>
     <AssociationSet Name="Рейтинг_игр" Association="Self.Рейтинг_игр">
       <End Role="Возрастной_рейтинг" EntitySet="Возрастной_рейтинг" />
@@ -335,6 +298,15 @@
       <End Role="Валюты" EntitySet="Валюты" />
       <End Role="Предметы_из_игр" EntitySet="Предметы_из_игр" />
     </AssociationSet>
+    <EntitySet Name="Издатели" EntityType="Game_items_tradingModel.Издатели" />
+    <AssociationSet Name="FK_Издатель_Страны1" Association="Game_items_tradingModel.FK_Издатель_Страны1">
+      <End Role="Страны" EntitySet="Страны" />
+      <End Role="Издатели" EntitySet="Издатели" />
+    </AssociationSet>
+    <AssociationSet Name="Издатели_игр1" Association="Game_items_tradingModel.Издатели_игр1">
+      <End Role="Игры" EntitySet="Игры" />
+      <End Role="Издатели" EntitySet="Издатели" />
+    </AssociationSet>
   </EntityContainer>
   <ComplexType Name="sp_helpdiagramdefinition_Result">
     <Property Type="Int32" Name="version" Nullable="true" />
@@ -360,5 +332,33 @@
         <PropertyRef Name="Буквенный_код_валюты" />
       </Dependent>
     </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Издатели">
+    <Key>
+      <PropertyRef Name="Код_издателя" />
+    </Key>
+    <Property Name="Код_издателя" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Издатель" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Код_страны" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Страны" Relationship="Game_items_tradingModel.FK_Издатель_Страны1" FromRole="Издатели" ToRole="Страны" />
+    <NavigationProperty Name="Игры" Relationship="Game_items_tradingModel.Издатели_игр1" FromRole="Издатели" ToRole="Игры" />
+  </EntityType>
+  <Association Name="FK_Издатель_Страны1">
+    <End Type="Game_items_tradingModel.Страны" Role="Страны" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="Game_items_tradingModel.Издатели" Role="Издатели" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Страны">
+        <PropertyRef Name="Буквенный_код_страны" />
+      </Principal>
+      <Dependent Role="Издатели">
+        <PropertyRef Name="Код_страны" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Издатели_игр1">
+    <End Type="Game_items_tradingModel.Игры" Role="Игры" Multiplicity="*" />
+    <End Type="Game_items_tradingModel.Издатели" Role="Издатели" Multiplicity="*" />
   </Association>
 </Schema>

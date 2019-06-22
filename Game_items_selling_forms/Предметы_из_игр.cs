@@ -22,11 +22,11 @@ namespace Game_items_selling_forms
     
         public int Код_предмета { get; set; }
         public int Код_игры { get; set; }
-        public string Название { get; set; }
         public string Буквенный_код_валюты { get; set; }
         public decimal Цена { get; set; }
         public string Редкость { get; set; }
         public int Количество { get; set; }
+        public string Игровой_предмет { get; set; }
     
         public virtual Игры Игры { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

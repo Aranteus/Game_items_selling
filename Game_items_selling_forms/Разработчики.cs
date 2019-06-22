@@ -21,9 +21,9 @@ namespace Game_items_selling_forms
         }
     
         public int Код_разработчика { get; set; }
-        public string Название { get; set; }
         public System.DateTime Дата_основания { get; set; }
         public int Кол_во_сотрудников { get; set; }
+        public string Разработчик { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Игры> Игры { get; set; }

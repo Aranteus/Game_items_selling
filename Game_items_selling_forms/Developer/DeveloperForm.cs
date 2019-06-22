@@ -23,7 +23,7 @@ namespace Game_items_selling_forms.Developer
         public DeveloperForm(Разработчики dev)
         {
             InitializeComponent();
-            DevName.Text = dev.Название;
+            DevName.Text = dev.Разработчик;
             maindev = dev;
         }
 
@@ -64,14 +64,14 @@ namespace Game_items_selling_forms.Developer
                         {
                             Database.Rows.Add(
                                 order.Код_чека,
-                                order.Торговые_площадки.Название,
-                                order.Предметы_из_игр.Название,
-                                order.Предметы_из_игр.Игры.Название,
-                                order.Предметы_из_игр.Игры.Разработчики.Название,
+                                order.Торговые_площадки.Торговая_площадка,
+                                order.Предметы_из_игр.Игровой_предмет,
+                                order.Предметы_из_игр.Игры.Игра,
+                                order.Предметы_из_игр.Игры.Разработчики.Разработчик,
                                 order.Дата,
                                 order.Кол_во_предметов,
                                 order.Кол_во_предметов * order.Предметы_из_игр.Цена,
-                                order.Предметы_из_игр.Валюты.Название);
+                                order.Предметы_из_игр.Валюты.Валюта);
                         }
                     }
                 }
@@ -95,7 +95,7 @@ namespace Game_items_selling_forms.Developer
             Database.Columns[4].Name = "Платформа";
             Database.Columns[5].Name = "Разработчик";
             Database.Columns[6].Name = "Жанр";
-            Database.Columns[7].Name = "Издатель";
+            Database.Columns[7].Name = "Издатели";
             Database.Columns[8].Name = "Название рейтинга";
             Database.Columns[9].Name = "Рейтинг";
             Database.Columns[10].Name = "Кол-во игр";
@@ -104,19 +104,19 @@ namespace Game_items_selling_forms.Developer
             {
                 if (game.Код_разработчика == maindev.Код_разработчика)
                 {
-                    foreach (Издатель p in game.Издатель)
+                    foreach (Издатели p in game.Издатели)
                     {
                         foreach (Возрастной_рейтинг r in game.Возрастной_рейтинг)
                         {
                             Database.Rows.Add(
                             game.Код_игры,
-                            game.Название,
+                            game.Игра,
                             game.Движок,
                             game.Дата_создания,
-                            game.Платформы.Название,
-                            game.Разработчики.Название,
-                            game.Жанры.Название,
-                            p.Название,
+                            game.Платформы.Платформа,
+                            game.Разработчики.Разработчик,
+                            game.Жанры.Жанр,
+                            p.Издатели,
                             r.Название_рейтинга,
                             r.Рейтинг,
                             game.Предметы_из_игр.Count());
@@ -153,12 +153,12 @@ namespace Game_items_selling_forms.Developer
                     {
                         Database.Rows.Add(
                             item.Код_предмета,
-                            item.Название,
+                            item.Игровой_предмет,
                             item.Редкость,
-                            item.Валюты.Название,
+                            item.Валюты.Валюта,
                             item.Цена,
                             item.Количество,
-                            item.Игры.Название,
+                            item.Игры.Игра,
                             item.Чек.Count);
                     }
                 }
@@ -281,11 +281,11 @@ namespace Game_items_selling_forms.Developer
         private void ChangeAcc_Click(object sender, EventArgs e)
         {
             Game_items_tradingEnt entity = new Game_items_tradingEnt();
-            string name = maindev.Название;
+            string name = maindev.Разработчик;
             ChangeDeveloper changeDeveloper = new ChangeDeveloper(maindev.Код_разработчика);
             changeDeveloper.ShowDialog();
             maindev = entity.Разработчики.FirstOrDefault(a => a.Код_разработчика == maindev.Код_разработчика);
-            if (maindev.Название != name) { MessageBox.Show($"Внимание! Ваш логин изменился!\nВаш новый логин: {maindev.Код_разработчика}_{maindev.Название}"); }
+            if (maindev.Разработчик != name) { MessageBox.Show($"Внимание! Ваш логин изменился!\nВаш новый логин: {maindev.Код_разработчика}_{maindev.Разработчик}"); }
         }
 
         private void Change_Click(object sender, EventArgs e)

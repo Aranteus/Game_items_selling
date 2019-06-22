@@ -209,7 +209,7 @@
     <Compile Include="Игры.cs">
       <DependentUpon>DatabaseModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Издатель.cs">
+    <Compile Include="Издатели.cs">
       <DependentUpon>DatabaseModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Платформы.cs">

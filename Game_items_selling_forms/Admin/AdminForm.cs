@@ -59,14 +59,14 @@ namespace Game_items_selling_forms
             {
                 Database.Rows.Add(
                     order.Код_чека,
-                    order.Торговые_площадки.Название,
-                    order.Предметы_из_игр.Название,
-                    order.Предметы_из_игр.Игры.Название,
-                    order.Предметы_из_игр.Игры.Разработчики.Название,
+                    order.Торговые_площадки.Торговая_площадка,
+                    order.Предметы_из_игр.Игровой_предмет,
+                    order.Предметы_из_игр.Игры.Игра,
+                    order.Предметы_из_игр.Игры.Разработчики.Разработчик,
                     order.Дата,
                     order.Кол_во_предметов,
                     order.Кол_во_предметов * order.Предметы_из_игр.Цена,
-                    order.Предметы_из_игр.Валюты.Название);
+                    order.Предметы_из_игр.Валюты.Валюта);
             }
         }
         private void ShowGames_Click(object sender, EventArgs e)
@@ -86,26 +86,26 @@ namespace Game_items_selling_forms
             Database.Columns[4].Name = "Платформа";
             Database.Columns[5].Name = "Разработчик";
             Database.Columns[6].Name = "Жанр";
-            Database.Columns[7].Name = "Издатель";
+            Database.Columns[7].Name = "Издатели";
             Database.Columns[8].Name = "Название рейтинга";
             Database.Columns[9].Name = "Рейтинг";
             Database.Columns[10].Name = "Кол-во игр";
 
             foreach (Игры game in entity.Игры)
             {
-                foreach (Издатель p in game.Издатель)
+                foreach (Издатели p in game.Издатели)
                 {
                     foreach (Возрастной_рейтинг r in game.Возрастной_рейтинг)
                     {
                         Database.Rows.Add(
                         game.Код_игры,
-                        game.Название,
+                        game.Игра,
                         game.Движок,
                         game.Дата_создания,
-                        game.Платформы.Название,
-                        game.Разработчики.Название,
-                        game.Жанры.Название,
-                        p.Название,
+                        game.Платформы.Платформа,
+                        game.Разработчики.Разработчик,
+                        game.Жанры.Жанр,
+                        p.Издатели,
                         r.Название_рейтинга,
                         r.Рейтинг,
                         game.Предметы_из_игр.Count());
@@ -136,12 +136,12 @@ namespace Game_items_selling_forms
             {
                 Database.Rows.Add(
                     item.Код_предмета,
-                    item.Название,
+                    item.Игровой_предмет,
                     item.Редкость,
-                    item.Валюты.Название,
+                    item.Валюты.Валюта,
                     item.Цена,
                     item.Количество,
-                    item.Игры.Название,
+                    item.Игры.Игра,
                     item.Чек.Count);
             }
         }
@@ -165,7 +165,7 @@ namespace Game_items_selling_forms
             {
                 Database.Rows.Add(
                     dev.Код_разработчика,
-                    dev.Название,
+                    dev.Разработчик,
                     dev.Дата_основания,
                     dev.Кол_во_сотрудников,
                     dev.Игры.Count);
@@ -191,9 +191,9 @@ namespace Game_items_selling_forms
             {
                 Database.Rows.Add(
                     trade.Код_торговой_площадки,
-                    trade.Название,
+                    trade.Торговая_площадка,
                     trade.Дата_создания,
-                    trade.Страны.Название,
+                    trade.Страны.Страна,
                     trade.Чек.Count);
             }
         }
@@ -215,7 +215,7 @@ namespace Game_items_selling_forms
             {
                 Database.Rows.Add(
                     curr.Буквенный_код_валюты,
-                    curr.Название,
+                    curr.Валюта,
                     curr.Предметы_из_игр.Count);
             }
         }
@@ -262,7 +262,7 @@ namespace Game_items_selling_forms
             {
                 Database.Rows.Add(
                     genre.Код_жанра,
-                    genre.Название,
+                    genre.Жанр,
                     genre.Игры.Count);
             }
         }
@@ -277,16 +277,16 @@ namespace Game_items_selling_forms
             Database.ColumnHeadersVisible = true;
 
             Database.Columns[0].Name = "Код издателя";
-            Database.Columns[1].Name = "Издатель";
+            Database.Columns[1].Name = "Издатели";
             Database.Columns[2].Name = "Страна";
             Database.Columns[3].Name = "Кол-во игр";
 
-            foreach (Издатель publ in entity.Издатель)
+            foreach (Издатели publ in entity.Издатели)
             {
                 Database.Rows.Add(
                     publ.Код_издателя,
-                    publ.Название,
-                    publ.Страны.Название,
+                    publ.Издатели,
+                    publ.Страны.Страна,
                     publ.Игры.Count);
             }
         }
@@ -308,7 +308,7 @@ namespace Game_items_selling_forms
             {
                 Database.Rows.Add(
                     plat.Код_платформы,
-                    plat.Название,
+                    plat.Платформа,
                     plat.Игры.Count);
             }
         }
@@ -331,8 +331,8 @@ namespace Game_items_selling_forms
             {
                 Database.Rows.Add(
                     country.Буквенный_код_страны,
-                    country.Название,
-                    country.Издатель.Count,
+                    country.Страна,
+                    country.Издатели.Count,
                     country.Торговые_площадки.Count);
             }
         }
@@ -445,8 +445,8 @@ namespace Game_items_selling_forms
                         }
                         else if (databasevalue == "publishers")
                         {
-                            Издатель publ = entity.Издатель.FirstOrDefault(a => a.Код_издателя == id);
-                            entity.Издатель.Remove(publ);
+                            Издатели publ = entity.Издатели.FirstOrDefault(a => a.Код_издателя == id);
+                            entity.Издатели.Remove(publ);
                             entity.SaveChanges();
                             ShowPublisher_Click(sender, e);
                         }

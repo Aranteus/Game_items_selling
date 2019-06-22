@@ -20,7 +20,7 @@ namespace Game_items_selling_web.Models
         }
     
         public int Код_издателя { get; set; }
-        public string Издатели { get; set; }
+        public string Издатель { get; set; }
         public string Код_страны { get; set; }
     
         public virtual Страны Страны { get; set; }

@@ -34,11 +34,11 @@ namespace Game_items_selling_forms.Admin
             if (GameItemTitleBox.Text != "" && CurrencyBox.Text != ""
                 && Price.Value > 0 && RareBox.Text != "" && GameItemsNumber.Value > 0)
             {
-                Валюты curr = entity.Валюты.FirstOrDefault(a => a.Название == CurrencyBox.Text);
+                Валюты curr = entity.Валюты.FirstOrDefault(a => a.Валюта == CurrencyBox.Text);
 
                 Предметы_из_игр gameitem = new Предметы_из_игр
                 {
-                    Название = GameItemTitleBox.Text,
+                    Игровой_предмет = GameItemTitleBox.Text,
                     Валюты = curr,
                     Цена = Price.Value,
                     Редкость = RareBox.Text,

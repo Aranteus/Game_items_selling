@@ -15,7 +15,7 @@
       <PropertyRef Name="Буквенный код валюты" />
     </Key>
     <Property Name="Буквенный код валюты" Type="nvarchar" MaxLength="3" Nullable="false" />
-    <Property Name="Название" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="Валюта" Type="nvarchar" MaxLength="255" Nullable="false" />
   </EntityType>
   <EntityType Name="Возрастной рейтинг">
     <Key>
@@ -30,7 +30,7 @@
       <PropertyRef Name="Код жанра" />
     </Key>
     <Property Name="Код жанра" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Название" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="Жанр" Type="nvarchar" MaxLength="255" Nullable="false" />
   </EntityType>
   <EntityType Name="Игры">
     <Key>
@@ -40,9 +40,17 @@
     <Property Name="Код разработчика" Type="int" Nullable="false" />
     <Property Name="Код жанра" Type="int" Nullable="false" />
     <Property Name="Код платформы" Type="int" Nullable="false" />
+    <Property Name="Игра" Type="nvarchar" MaxLength="255" Nullable="false" />
     <Property Name="Движок" Type="nvarchar" MaxLength="255" Nullable="false" />
-    <Property Name="Название" Type="nvarchar" MaxLength="255" Nullable="false" />
     <Property Name="Дата создания" Type="date" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Издатели">
+    <Key>
+      <PropertyRef Name="Код издателя" />
+    </Key>
+    <Property Name="Код издателя" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Издатель" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="Код страны" Type="nvarchar" MaxLength="3" Nullable="false" />
   </EntityType>
   <EntityType Name="Издатели игр">
     <Key>
@@ -52,20 +60,12 @@
     <Property Name="Код издателя" Type="int" Nullable="false" />
     <Property Name="Код игры" Type="int" Nullable="false" />
   </EntityType>
-  <EntityType Name="Издатель">
-    <Key>
-      <PropertyRef Name="Код издателя" />
-    </Key>
-    <Property Name="Код издателя" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Название" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="Код страны" Type="nchar" MaxLength="10" Nullable="false" />
-  </EntityType>
   <EntityType Name="Платформы">
     <Key>
       <PropertyRef Name="Код платформы" />
     </Key>
     <Property Name="Код платформы" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Название" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="Платформа" Type="nvarchar" MaxLength="255" Nullable="false" />
   </EntityType>
   <EntityType Name="Предметы из игр">
     <Key>
@@ -73,7 +73,7 @@
     </Key>
     <Property Name="Код предмета" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Код игры" Type="int" Nullable="false" />
-    <Property Name="Название" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="Игровой предмет" Type="nvarchar" MaxLength="255" Nullable="false" />
     <Property Name="Буквенный код валюты" Type="nvarchar" MaxLength="3" Nullable="false" />
     <Property Name="Цена" Type="money" Nullable="false" />
     <Property Name="Редкость" Type="nvarchar" MaxLength="255" Nullable="false" />
@@ -84,7 +84,7 @@
       <PropertyRef Name="Код разработчика" />
     </Key>
     <Property Name="Код разработчика" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Название" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="Разработчик" Type="nvarchar" MaxLength="255" Nullable="false" />
     <Property Name="Дата основания" Type="date" Nullable="false" />
     <Property Name="Кол-во сотрудников" Type="int" Nullable="false" />
   </EntityType>
@@ -100,17 +100,17 @@
     <Key>
       <PropertyRef Name="Буквенный код страны" />
     </Key>
-    <Property Name="Буквенный код страны" Type="nchar" MaxLength="10" Nullable="false" />
-    <Property Name="Название" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="Буквенный код страны" Type="nvarchar" MaxLength="3" Nullable="false" />
+    <Property Name="Страна" Type="nvarchar" MaxLength="255" Nullable="false" />
   </EntityType>
   <EntityType Name="Торговые площадки">
     <Key>
       <PropertyRef Name="Код торговой площадки" />
     </Key>
     <Property Name="Код торговой площадки" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Название" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="Торговая площадка" Type="nvarchar" MaxLength="255" Nullable="false" />
     <Property Name="Дата создания" Type="date" Nullable="false" />
-    <Property Name="Код страны" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="Код страны" Type="nvarchar" MaxLength="3" Nullable="false" />
   </EntityType>
   <EntityType Name="Чек">
     <Key>
@@ -179,12 +179,12 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Издатели игр_Издатель">
-    <End Role="Издатель" Type="Self.Издатель" Multiplicity="1">
+    <End Role="Издатели" Type="Self.Издатели" Multiplicity="1">
       <OnDelete Action="Cascade" />
     </End>
     <End Role="Издатели игр" Type="Self.Издатели игр" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="Издатель">
+      <Principal Role="Издатели">
         <PropertyRef Name="Код издателя" />
       </Principal>
       <Dependent Role="Издатели игр">
@@ -196,12 +196,12 @@
     <End Role="Страны" Type="Self.Страны" Multiplicity="1">
       <OnDelete Action="Cascade" />
     </End>
-    <End Role="Издатель" Type="Self.Издатель" Multiplicity="*" />
+    <End Role="Издатели" Type="Self.Издатели" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Страны">
         <PropertyRef Name="Буквенный код страны" />
       </Principal>
-      <Dependent Role="Издатель">
+      <Dependent Role="Издатели">
         <PropertyRef Name="Код страны" />
       </Dependent>
     </ReferentialConstraint>
@@ -341,8 +341,8 @@
     <EntitySet Name="Возрастной рейтинг" EntityType="Self.Возрастной рейтинг" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Жанры" EntityType="Self.Жанры" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Игры" EntityType="Self.Игры" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Издатели" EntityType="Self.Издатели" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Издатели игр" EntityType="Self.Издатели игр" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Издатель" EntityType="Self.Издатель" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Платформы" EntityType="Self.Платформы" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Предметы из игр" EntityType="Self.Предметы из игр" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Разработчики" EntityType="Self.Разработчики" Schema="dbo" store:Type="Tables" />
@@ -367,12 +367,12 @@
       <End Role="Издатели игр" EntitySet="Издатели игр" />
     </AssociationSet>
     <AssociationSet Name="FK_Издатели игр_Издатель" Association="Self.FK_Издатели игр_Издатель">
-      <End Role="Издатель" EntitySet="Издатель" />
+      <End Role="Издатели" EntitySet="Издатели" />
       <End Role="Издатели игр" EntitySet="Издатели игр" />
     </AssociationSet>
     <AssociationSet Name="FK_Издатель_Страны" Association="Self.FK_Издатель_Страны">
       <End Role="Страны" EntitySet="Страны" />
-      <End Role="Издатель" EntitySet="Издатель" />
+      <End Role="Издатели" EntitySet="Издатели" />
     </AssociationSet>
     <AssociationSet Name="FK_Предметы из игр_Валюты" Association="Self.FK_Предметы из игр_Валюты">
       <End Role="Валюты" EntitySet="Валюты" />
