@@ -32,32 +32,34 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Игра)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Движок)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Дата_создания)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Жанры.Жанр)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Платформы.Платформа)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Разработчики.Разработчик)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Код_игры }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Код_игры }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Код_игры })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Игра)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Движок)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Дата_создания)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Жанры.Жанр)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Платформы.Платформа)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Разработчики.Разработчик)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Код_игры }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Код_игры }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Код_игры })
+            </td>
+        </tr>
+    }
 
 </table>
+@Html.ActionLink("Import to Excel", "Excel")

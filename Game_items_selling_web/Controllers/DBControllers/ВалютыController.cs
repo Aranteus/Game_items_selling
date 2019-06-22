@@ -6,7 +6,9 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using Game_items_selling_web.Controllers.DBControllers;
 using Game_items_selling_web.Models;
+
 
 namespace Game_items_selling_web.Controllers
 {
@@ -123,5 +125,21 @@ namespace Game_items_selling_web.Controllers
             }
             base.Dispose(disposing);
         }
+        public ActionResult Excel()
+        {
+            System.Data.DataTable list = new System.Data.DataTable();
+            for (int i = 0; i < 4; i++)
+            { list.Columns.Add(); }
+            foreach (Валюты curr in db.Валюты)
+            {
+                list.Rows.Add(
+                    curr.Буквенный_код_валюты,
+                    curr.Валюта,
+                    curr.Предметы_из_игр.Count);
+            }
+            Functions.Excel("currencies", list);
+            return RedirectToAction("Index");
+        }
+
     }
 }

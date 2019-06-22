@@ -23,23 +23,25 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Разработчик)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Дата_основания)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Кол_во_сотрудников)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Код_разработчика }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Код_разработчика }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Код_разработчика })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Разработчик)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Дата_основания)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Кол_во_сотрудников)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Код_разработчика }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Код_разработчика }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Код_разработчика })
+            </td>
+        </tr>
+    }
 
 </table>
+@Html.ActionLink("Import to Excel", "Excel")

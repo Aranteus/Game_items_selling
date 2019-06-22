@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using Game_items_selling_web.Controllers.DBControllers;
 using Game_items_selling_web.Models;
 
 namespace Game_items_selling_web.Controllers
@@ -131,6 +132,26 @@ namespace Game_items_selling_web.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+        public ActionResult Excel()
+        {
+            System.Data.DataTable list = new System.Data.DataTable();
+            for (int i = 0; i < 9; i++)
+            { list.Columns.Add(); }
+            foreach (Предметы_из_игр item in db.Предметы_из_игр)
+            {
+                list.Rows.Add(
+                    item.Код_предмета,
+                    item.Игровой_предмет,
+                    item.Редкость,
+                    item.Валюты.Валюта,
+                    item.Цена,
+                    item.Количество,
+                    item.Игры.Игра,
+                    item.Чек.Count);
+            }
+            Functions.Excel("game_items", list);
+            return RedirectToAction("Index");
         }
     }
 }

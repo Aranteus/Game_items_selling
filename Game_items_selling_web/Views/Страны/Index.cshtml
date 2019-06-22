@@ -14,15 +14,17 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Страна)
-        </td>
-        <td>
-            @Html.ActionLink("Details", "Details", new { id=item.Буквенный_код_страны }) |
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Страна)
+            </td>
+            <td>
+                @Html.ActionLink("Details", "Details", new { id = item.Буквенный_код_страны }) |
+            </td>
+        </tr>
+    }
 
 </table>
+@Html.ActionLink("Import to Excel", "Excel")

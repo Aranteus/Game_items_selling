@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using Game_items_selling_web.Controllers.DBControllers;
 using Game_items_selling_web.Models;
 
 namespace Game_items_selling_web.Controllers
@@ -122,6 +123,22 @@ namespace Game_items_selling_web.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+        public ActionResult Excel()
+        {
+            System.Data.DataTable list = new System.Data.DataTable();
+            for (int i = 0; i < 6; i++)
+            { list.Columns.Add(); }
+            foreach (Страны country in db.Страны)
+            {
+                list.Rows.Add(
+                    country.Буквенный_код_страны,
+                    country.Страна,
+                    country.Издатели.Count,
+                    country.Торговые_площадки.Count);
+            }
+            Functions.Excel("countries", list);
+            return RedirectToAction("Index");
         }
     }
 }

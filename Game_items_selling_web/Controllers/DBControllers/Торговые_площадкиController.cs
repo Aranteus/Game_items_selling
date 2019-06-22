@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using Game_items_selling_web.Controllers.DBControllers;
 using Game_items_selling_web.Models;
 
 namespace Game_items_selling_web.Controllers
@@ -127,6 +128,23 @@ namespace Game_items_selling_web.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+        public ActionResult Excel()
+        {
+            System.Data.DataTable list = new System.Data.DataTable();
+            for (int i = 0; i < 6; i++)
+            { list.Columns.Add(); }
+            foreach (Торговые_площадки trade in db.Торговые_площадки)
+            {
+                list.Rows.Add(
+                    trade.Код_торговой_площадки,
+                    trade.Торговая_площадка,
+                    trade.Дата_создания,
+                    trade.Страны.Страна,
+                    trade.Чек.Count);
+            }
+            Functions.Excel("traders", list);
+            return RedirectToAction("Index");
         }
     }
 }

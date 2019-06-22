@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Game_items_selling_web.Models;
 
 namespace Game_items_selling_web.Controllers
 {
     public class HomeController : Controller
     {
+        private Game_items_tradingEntities db = new Game_items_tradingEntities();
         public ActionResult Index()
         {
             return View();
@@ -53,7 +55,53 @@ namespace Game_items_selling_web.Controllers
             {
                 return RedirectToAction("Administrator", "Home");
             }
-            else { }
+            else if (login != "" && password == "developer")
+            {
+                if (login.Contains("_") == true)
+                {
+                    string[] mas = login.Split('_');
+                    if (mas.Length == 2)
+                    {
+                        if (Int32.TryParse(mas[0], out int id) == true)
+                        {
+                            string name = mas[1];
+                            Разработчики dev = db.Разработчики.FirstOrDefault(a => a.Код_разработчика == id && a.Разработчик == name);
+                            if (dev != null)
+                            {
+                                return RedirectToAction("Developer", "Home");
+                            }
+                            else return HttpNotFound("Логин или пароль введены неверно");
+                        }
+                        else return HttpNotFound("Логин или пароль введены неверно");
+                    }
+                    else return HttpNotFound("Логин или пароль введены неверно");
+                }
+                else return HttpNotFound("Логин или пароль введены неверно");                
+            }
+            else if (login != "" && password == "trader")
+            {
+                if (login.Contains("_") == true)
+                {
+                    string[] mas = login.Split('_');
+                    if (mas.Length == 2)
+                    {
+                        if (Int32.TryParse(mas[0], out int id) == true)
+                        {
+                            string name = mas[1];
+                            Торговые_площадки trader = db.Торговые_площадки.FirstOrDefault(a => a.Код_торговой_площадки == id && a.Торговая_площадка == name);
+                            if (trader != null)
+                            {
+                                return RedirectToAction("Trader", "Home");
+                            }
+                            else return HttpNotFound("Логин или пароль введены неверно");
+                        }
+                        else return HttpNotFound("Логин или пароль введены неверно");
+                    }
+                    else return HttpNotFound("Логин или пароль введены неверно");
+                }
+                else return HttpNotFound("Логин или пароль введены неверно");
+            }
+            else 
             return HttpNotFound("Логин или пароль введены неверно");
         }
     }

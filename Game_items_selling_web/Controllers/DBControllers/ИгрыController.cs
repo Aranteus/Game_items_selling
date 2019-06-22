@@ -7,6 +7,9 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Game_items_selling_web.Models;
+using Microsoft.Office.Interop.Excel;
+using System.IO;
+using Game_items_selling_web.Controllers.DBControllers;
 
 namespace Game_items_selling_web.Controllers
 {
@@ -135,6 +138,35 @@ namespace Game_items_selling_web.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+        public ActionResult Excel()
+        {
+            System.Data.DataTable list = new System.Data.DataTable();
+            for (int i = 0; i < 12; i++)
+            { list.Columns.Add(); }
+            foreach (Игры game in db.Игры)
+            {
+                foreach (Издатели p in game.Издатели)
+                {
+                    foreach (Возрастной_рейтинг r in game.Возрастной_рейтинг)
+                    {
+                        list.Rows.Add(
+                        game.Код_игры,
+                        game.Игра,
+                        game.Движок,
+                        game.Дата_создания,
+                        game.Платформы.Платформа,
+                        game.Разработчики.Разработчик,
+                        game.Жанры.Жанр,
+                        p.Издатель,
+                        r.Название_рейтинга,
+                        r.Рейтинг,
+                        game.Предметы_из_игр.Count());
+                    }
+                }
+            }
+            Functions.Excel("games", list);
+            return RedirectToAction("Index");
         }
     }
 }

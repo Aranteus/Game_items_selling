@@ -23,23 +23,25 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Торговая_площадка)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Дата_создания)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Страны.Страна)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Код_торговой_площадки }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Код_торговой_площадки }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Код_торговой_площадки })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Торговая_площадка)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Дата_создания)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Страны.Страна)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Код_торговой_площадки }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Код_торговой_площадки }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Код_торговой_площадки })
+            </td>
+        </tr>
+    }
 
 </table>
+@Html.ActionLink("Import to Excel", "Excel")

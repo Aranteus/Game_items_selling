@@ -12,7 +12,7 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Издатели)
+            @Html.DisplayNameFor(model => model.Издатель)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Страны.Страна)
@@ -20,20 +20,22 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Издатели)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Страны.Страна)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Код_издателя }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Код_издателя }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Код_издателя })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Издатель)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Страны.Страна)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Код_издателя }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Код_издателя }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Код_издателя })
+            </td>
+        </tr>
+    }
 
 </table>
+@Html.ActionLink("Import to Excel", "Excel")

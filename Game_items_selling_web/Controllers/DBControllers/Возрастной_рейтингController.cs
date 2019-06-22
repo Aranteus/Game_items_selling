@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using Game_items_selling_web.Controllers.DBControllers;
 using Game_items_selling_web.Models;
 
 namespace Game_items_selling_web.Controllers
@@ -122,6 +123,22 @@ namespace Game_items_selling_web.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+        public ActionResult Excel()
+        {
+            System.Data.DataTable list = new System.Data.DataTable();
+            for (int i = 0; i < 5; i++)
+            { list.Columns.Add(); }
+            foreach (Возрастной_рейтинг rating in db.Возрастной_рейтинг)
+            {
+                list.Rows.Add(
+                    rating.Код_возрастного_рейтинга,
+                    rating.Название_рейтинга,
+                    rating.Рейтинг,
+                    rating.Игры.Count);
+            }
+            Functions.Excel("age_ratings", list);
+            return RedirectToAction("Index");
         }
     }
 }
