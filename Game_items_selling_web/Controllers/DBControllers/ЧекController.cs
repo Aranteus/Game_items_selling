@@ -16,10 +16,18 @@ namespace Game_items_selling_web.Controllers
         private Game_items_tradingEntities db = new Game_items_tradingEntities();
 
         // GET: Чек
-        public ActionResult Index()
+        public ActionResult Index(int id = -1, string role = "administrator")
         {
-            var чек = db.Чек.Include(ч => ч.Предметы_из_игр).Include(ч => ч.Торговые_площадки);
-            return View(чек.ToList());
+            if (id != -1 && role == "developer")
+            {
+                var чек = db.Чек.Where(a => a.Предметы_из_игр.Игры.Код_разработчика == id).Include(ч => ч.Предметы_из_игр).Include(ч => ч.Торговые_площадки);
+                return View(чек.ToList());
+            }
+            else
+            {
+                var чек = db.Чек.Include(ч => ч.Предметы_из_игр).Include(ч => ч.Торговые_площадки);
+                return View(чек.ToList());
+            }
         }
 
         // GET: Чек/Details/5

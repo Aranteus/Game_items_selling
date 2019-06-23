@@ -16,10 +16,18 @@ namespace Game_items_selling_web.Controllers
         private Game_items_tradingEntities db = new Game_items_tradingEntities();
 
         // GET: Предметы_из_игр
-        public ActionResult Index()
+        public ActionResult Index(int id = -1, string role = "administrator")
         {
-            var предметы_из_игр = db.Предметы_из_игр.Include(п => п.Валюты).Include(п => п.Игры);
-            return View(предметы_из_игр.ToList());
+            if (id != -1 && role == "developer")
+            {
+                var предметы_из_игр = db.Предметы_из_игр.Where(a => a.Игры.Код_разработчика == id).Include(п => п.Валюты).Include(п => п.Игры);
+                return View(предметы_из_игр.ToList());
+            }
+            else
+            {
+                var предметы_из_игр = db.Предметы_из_игр.Include(п => п.Валюты).Include(п => п.Игры);
+                return View(предметы_из_игр.ToList());
+            }
         }
 
         // GET: Предметы_из_игр/Details/5
@@ -133,7 +141,7 @@ namespace Game_items_selling_web.Controllers
             }
             base.Dispose(disposing);
         }
-        public ActionResult Excel()
+        public ActionResult Excel(int id_ = -1, string role_ = "administrator")
         {
             System.Data.DataTable list = new System.Data.DataTable();
             for (int i = 0; i < 9; i++)

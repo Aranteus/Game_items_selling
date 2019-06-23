@@ -7,7 +7,7 @@
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create New", "Create", new { id = ViewBag.id, role = ViewBag.role })
 </p>
 <table class="table">
     <tr>
@@ -62,4 +62,4 @@
     }
 
 </table>
-@Html.ActionLink("Import to Excel", "Excel")
+@Html.ActionLink("Import to Excel", "Excel", new { id_ = ViewBag.id, role_ = ViewBag.role }, null)

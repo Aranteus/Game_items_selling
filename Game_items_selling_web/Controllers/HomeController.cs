@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Game_items_selling_web.Models;
+using Game_items_selling_web.Controllers.DBControllers;
 
 namespace Game_items_selling_web.Controllers
 {
@@ -27,13 +28,15 @@ namespace Game_items_selling_web.Controllers
             return View();
         }
 
-        public ActionResult Trader()
+        public ActionResult Trader(string id)
         {
+            ViewBag.id = id;
             return View();
         }
 
-        public ActionResult Developer()
+        public ActionResult Developer(string id)
         {
+            ViewBag.id = id;
             return View();
         }
         public ActionResult Adm_Help()
@@ -68,7 +71,7 @@ namespace Game_items_selling_web.Controllers
                             Разработчики dev = db.Разработчики.FirstOrDefault(a => a.Код_разработчика == id && a.Разработчик == name);
                             if (dev != null)
                             {
-                                return RedirectToAction("Developer", "Home");
+                                return RedirectToAction("Developer", "Home", new { id = id.ToString() } );
                             }
                             else return HttpNotFound("Логин или пароль введены неверно");
                         }
@@ -91,7 +94,7 @@ namespace Game_items_selling_web.Controllers
                             Торговые_площадки trader = db.Торговые_площадки.FirstOrDefault(a => a.Код_торговой_площадки == id && a.Торговая_площадка == name);
                             if (trader != null)
                             {
-                                return RedirectToAction("Trader", "Home");
+                                return RedirectToAction("Trader", "Home", new { id = id.ToString() });
                             }
                             else return HttpNotFound("Логин или пароль введены неверно");
                         }
@@ -101,8 +104,7 @@ namespace Game_items_selling_web.Controllers
                 }
                 else return HttpNotFound("Логин или пароль введены неверно");
             }
-            else 
-            return HttpNotFound("Логин или пароль введены неверно");
+            else return HttpNotFound("Логин или пароль введены неверно");
         }
     }
 }

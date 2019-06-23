@@ -8,6 +8,8 @@ namespace Game_items_selling_web.Controllers.DBControllers
 {
     public class Functions
     {
+        public static int dev_id;
+        public static int trade_id;
         public static void Excel(string databasevalue, System.Data.DataTable list)
         {
             _Application excelapp = new Microsoft.Office.Interop.Excel.Application
