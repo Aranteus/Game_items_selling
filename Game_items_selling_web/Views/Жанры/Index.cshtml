@@ -4,7 +4,7 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Жанры</h2>
 
 <table class="table">
     <tr>
@@ -21,7 +21,7 @@
                 @Html.DisplayFor(modelItem => item.Жанр)
             </td>
             <td>
-                @Html.ActionLink("Details", "Details", new { id = item.Код_жанра }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Код_жанра })
             </td>
         </tr>
     }

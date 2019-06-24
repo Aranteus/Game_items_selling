@@ -18,9 +18,16 @@ namespace Game_items_selling_web.Controllers
         // GET: Чек
         public ActionResult Index(int id = -1, string role = "administrator")
         {
+            ViewBag.id = id;
+            ViewBag.role = role;
             if (id != -1 && role == "developer")
             {
                 var чек = db.Чек.Where(a => a.Предметы_из_игр.Игры.Код_разработчика == id).Include(ч => ч.Предметы_из_игр).Include(ч => ч.Торговые_площадки);
+                return View(чек.ToList());
+            }
+            else if (id != -1 && role == "trader")
+            {
+                var чек = db.Чек.Where(a=>a.Торговые_площадки.Код_торговой_площадки == id).Include(ч => ч.Предметы_из_игр).Include(ч => ч.Торговые_площадки);
                 return View(чек.ToList());
             }
             else
@@ -141,27 +148,76 @@ namespace Game_items_selling_web.Controllers
             }
             base.Dispose(disposing);
         }
-        public ActionResult Excel()
+        public ActionResult Excel(int _id = -1, string _role = "administrator")
         {
             System.Data.DataTable list = new System.Data.DataTable();
             for (int i = 0; i < 10; i++)
             { list.Columns.Add(); }
-            foreach (Торговые_площадки trade in db.Торговые_площадки)
-                foreach (var order in db.Чек)
+            if (_role == "administrator")
+            {
+                    foreach (var order in db.Чек)
+                    {
+                        list.Rows.Add(
+                            order.Код_чека,
+                            order.Торговые_площадки.Торговая_площадка,
+                            order.Предметы_из_игр.Игровой_предмет,
+                            order.Предметы_из_игр.Игры.Игра,
+                            order.Предметы_из_игр.Игры.Разработчики.Разработчик,
+                            order.Дата,
+                            order.Кол_во_предметов,
+                            order.Кол_во_предметов * order.Предметы_из_игр.Цена,
+                            order.Предметы_из_игр.Валюты.Валюта);
+                    }
+            }
+            else if (_role == "developer")
+            {
+                foreach (Игры game in db.Игры)
                 {
-                    list.Rows.Add(
-                        order.Код_чека,
-                        order.Торговые_площадки.Торговая_площадка,
-                        order.Предметы_из_игр.Игровой_предмет,
-                        order.Предметы_из_игр.Игры.Игра,
-                        order.Предметы_из_игр.Игры.Разработчики.Разработчик,
-                        order.Дата,
-                        order.Кол_во_предметов,
-                        order.Кол_во_предметов * order.Предметы_из_игр.Цена,
-                        order.Предметы_из_игр.Валюты.Валюта);
+                    if (game.Код_разработчика == _id)
+                    {
+                        foreach (Предметы_из_игр gameitem in game.Предметы_из_игр)
+                        {
+                            foreach (Чек order in gameitem.Чек)
+                            {
+                                list.Rows.Add(
+                                    order.Код_чека,
+                                    order.Торговые_площадки.Торговая_площадка,
+                                    order.Предметы_из_игр.Игровой_предмет,
+                                    order.Предметы_из_игр.Игры.Игра,
+                                    order.Предметы_из_игр.Игры.Разработчики.Разработчик,
+                                    order.Дата,
+                                    order.Кол_во_предметов,
+                                    order.Кол_во_предметов * order.Предметы_из_игр.Цена,
+                                    order.Предметы_из_игр.Валюты.Валюта);
+                            }
+                        }
+                    }
                 }
+            }
+            else if (_role == "trader")
+            {
+                foreach (Торговые_площадки trader in db.Торговые_площадки)
+                {
+                    if (trader.Код_торговой_площадки == _id)
+                    {
+                        foreach (Чек order in trader.Чек)
+                        {
+                            list.Rows.Add(
+                                order.Код_чека,
+                                order.Торговые_площадки.Торговая_площадка,
+                                order.Предметы_из_игр.Игровой_предмет,
+                                order.Предметы_из_игр.Игры.Игра,
+                                order.Предметы_из_игр.Игры.Разработчики.Разработчик,
+                                order.Дата,
+                                order.Кол_во_предметов,
+                                order.Кол_во_предметов * order.Предметы_из_игр.Цена,
+                                order.Предметы_из_игр.Валюты.Валюта);
+                        }
+                    }
+                }
+            }
             Functions.Excel("orders", list);
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", new { id = _id, role = _role });
         }
     }
 }

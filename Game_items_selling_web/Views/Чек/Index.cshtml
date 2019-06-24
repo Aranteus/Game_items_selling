@@ -4,7 +4,7 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Чеки</h2>
 
 <table class="table">
     <tr>
@@ -39,10 +39,10 @@
                 @Html.DisplayFor(modelItem => item.Торговые_площадки.Торговая_площадка)
             </td>
             <td>
-                @Html.ActionLink("Details", "Details", new { id = item.Код_чека }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Код_чека }) 
             </td>
         </tr>
     }
 
 </table>
-@Html.ActionLink("Import to Excel", "Excel")
+@Html.ActionLink("Import to Excel", "Excel", new { id_ = ViewBag.id, role_ = ViewBag.role }, null)

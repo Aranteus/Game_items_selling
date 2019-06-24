@@ -18,10 +18,10 @@
         @Html.HiddenFor(model => model.Код_издателя)
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Издатели, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Издатель, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Издатели, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Издатели, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.Издатель, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Издатель, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -41,9 +41,6 @@
     </div>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

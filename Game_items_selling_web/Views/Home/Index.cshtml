@@ -3,10 +3,10 @@
 }
 
 <div class="jumbotron">
-    <h1>ASP.NET</h1>
+    <h2>Информационная система торговли предметами в компьютерных играх</h2>
 </div>
 
-<div class="row">
+<!--div class="row">
     <div class="col-md-4">
         <p>
             Log in as Administrator.
@@ -25,14 +25,16 @@
         </p>
         <p>@Html.ActionLink("Trader", "Trader", "Home")</p>
     </div>
-</div>
+</div> -->
+
 @using (Html.BeginForm("Index", "Home", FormMethod.Post))
-{
-    <p>Введите логин: </p>
-    @Html.TextBox("login", "Введите имя")
-    <p>Введите пароль:</p>
-    @Html.TextBox("password", "Введите адрес")
-    <p><input type="submit" value="Log in" /></p>
+{<div class=form-horizontal>
+        <p>Введите логин: </p>
+        @Html.TextBox("login", "admin")
+        <p>Введите пароль:</p>
+        @Html.Password("password", "admin")
+        <p><input type="submit" value="Log in" /></p>
+    </div>
 }
-<p>@Html.ActionLink("Зарегистрировать разработчика", "Create", "Разработчики")</p>
-<p>@Html.ActionLink("Зарегистрировать торговую площадку", "Create", "Торговые_площадки")</p>
+<p>@Html.ActionLink("Зарегистрировать разработчика", "Create", "Разработчики", new { _role = "register" }, null)</p>
+<p>@Html.ActionLink("Зарегистрировать торговую площадку", "Create", "Торговые_площадки", new { _role = "register" }, null)</p>

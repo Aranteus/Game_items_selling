@@ -38,8 +38,9 @@ namespace Game_items_selling_web.Controllers
         }
 
         // GET: Торговые_площадки/Create
-        public ActionResult Create()
+        public ActionResult Create(string _role = "create")
         {
+            ViewBag.role = _role;
             ViewBag.Код_страны = new SelectList(db.Страны, "Буквенный_код_страны", "Страна");
             return View();
         }
@@ -49,13 +50,19 @@ namespace Game_items_selling_web.Controllers
         // сведения см. в статье https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Код_торговой_площадки,Торговая_площадка,Дата_создания,Код_страны")] Торговые_площадки торговые_площадки)
+        public ActionResult Create([Bind(Include = "Код_торговой_площадки,Торговая_площадка,Дата_создания,Код_страны")] Торговые_площадки торговые_площадки, string _role = "create")
         {
             if (ModelState.IsValid)
             {
                 db.Торговые_площадки.Add(торговые_площадки);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                if (_role == "register") return RedirectToAction("Register", "Home", new
+                {
+                    login = торговые_площадки.Код_торговой_площадки.ToString() + "_" + торговые_площадки.Торговая_площадка.ToString(),
+                    password = "trader"
+                });
+                else
+                    return RedirectToAction("Index");
             }
 
             ViewBag.Код_страны = new SelectList(db.Страны, "Буквенный_код_страны", "Страна", торговые_площадки.Код_страны);

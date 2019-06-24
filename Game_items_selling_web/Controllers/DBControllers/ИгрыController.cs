@@ -84,10 +84,10 @@ namespace Game_items_selling_web.Controllers
         }
 
         // GET: Игры/Edit/5
-        public ActionResult Edit(int? id, int _id = -1, string role = "administrator")
+        public ActionResult Edit(int? id, int _id = -1, string _role = "administrator")
         {
             ViewBag.id = _id;
-            ViewBag.role = role;
+            ViewBag.role = _role;
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -123,10 +123,10 @@ namespace Game_items_selling_web.Controllers
         }
 
         // GET: Игры/Delete/5
-        public ActionResult Delete(int? id, int _id = -1, string role = "administrator")
+        public ActionResult Delete(int? id, int _id = -1, string _role = "administrator")
         {
             ViewBag.id = _id;
-            ViewBag.role = role;
+            ViewBag.role = _role;
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);

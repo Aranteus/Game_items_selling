@@ -338,6 +338,7 @@
     <Content Include="Views\Home\Adm_Help.cshtml" />
     <Content Include="Views\Home\Dev_Help.cshtml" />
     <Content Include="Views\Home\Trade_Help.cshtml" />
+    <Content Include="Views\Home\Register.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

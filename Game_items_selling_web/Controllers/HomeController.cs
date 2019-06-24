@@ -51,6 +51,12 @@ namespace Game_items_selling_web.Controllers
         {
             return View();
         }
+        public ActionResult Register(string login, string password)
+        {
+            ViewBag.login = login;
+            ViewBag.password = password;
+            return View();
+        }
         [HttpPost]
         public ActionResult Index(string login, string password)
         {
@@ -73,13 +79,13 @@ namespace Game_items_selling_web.Controllers
                             {
                                 return RedirectToAction("Developer", "Home", new { id = id.ToString() } );
                             }
-                            else return HttpNotFound("Логин или пароль введены неверно");
+                            else return HttpNotFound("Wrong login or password");
                         }
-                        else return HttpNotFound("Логин или пароль введены неверно");
+                        else return HttpNotFound("Wrong login or password");
                     }
-                    else return HttpNotFound("Логин или пароль введены неверно");
+                    else return HttpNotFound("Wrong login or password");
                 }
-                else return HttpNotFound("Логин или пароль введены неверно");                
+                else return HttpNotFound("Wrong login or password");
             }
             else if (login != "" && password == "trader")
             {
@@ -96,15 +102,15 @@ namespace Game_items_selling_web.Controllers
                             {
                                 return RedirectToAction("Trader", "Home", new { id = id.ToString() });
                             }
-                            else return HttpNotFound("Логин или пароль введены неверно");
+                            else return HttpNotFound("Wrong login or password");
                         }
-                        else return HttpNotFound("Логин или пароль введены неверно");
+                        else return HttpNotFound("Wrong login or password");
                     }
-                    else return HttpNotFound("Логин или пароль введены неверно");
+                    else return HttpNotFound("Wrong login or password");
                 }
-                else return HttpNotFound("Логин или пароль введены неверно");
+                else return HttpNotFound("Wrong login or password");
             }
-            else return HttpNotFound("Логин или пароль введены неверно");
+            else return HttpNotFound("Wrong login or password");
         }
     }
 }

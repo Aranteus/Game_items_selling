@@ -37,8 +37,9 @@ namespace Game_items_selling_web.Controllers
         }
 
         // GET: Разработчики/Create
-        public ActionResult Create()
+        public ActionResult Create(string _role = "create")
         {
+            ViewBag.role = _role;
             return View();
         }
 
@@ -47,13 +48,17 @@ namespace Game_items_selling_web.Controllers
         // сведения см. в статье https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Код_разработчика,Разработчик,Дата_основания,Кол_во_сотрудников")] Разработчики разработчики)
+        public ActionResult Create([Bind(Include = "Код_разработчика,Разработчик,Дата_основания,Кол_во_сотрудников")] Разработчики разработчики, string _role = "create")
         {
             if (ModelState.IsValid)
             {
                 db.Разработчики.Add(разработчики);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                if (_role == "register") return RedirectToAction("Register", "Home", new {
+                    login = разработчики.Код_разработчика.ToString() + "_" + разработчики.Разработчик.ToString(),
+                    password = "developer"});
+                else
+                    return RedirectToAction("Index");
             }
 
             return View(разработчики);

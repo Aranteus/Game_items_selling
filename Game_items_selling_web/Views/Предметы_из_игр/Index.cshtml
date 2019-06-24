@@ -4,10 +4,10 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Игровые предметы</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @if (ViewBag.role != "trader") { @Html.ActionLink("Create New", "Create", new { id = ViewBag.id, role = ViewBag.role }, null) }
 </p>
 <table class="table">
     <tr>
@@ -54,12 +54,22 @@
                 @Html.DisplayFor(modelItem => item.Игры.Игра)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.Код_предмета }) |
-                @Html.ActionLink("Details", "Details", new { id = item.Код_предмета }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.Код_предмета })
+                @if (ViewBag.role != "trader") { @Html.ActionLink("Edit", "Edit", new { id = item.Код_предмета, _id = ViewBag.id, _role = ViewBag.role }, null); }
+                @Html.ActionLink("Details", "Details", new { id = item.Код_предмета })
+                @if (ViewBag.role != "trader") { @Html.ActionLink("Delete", "Delete", new { id = item.Код_предмета, _id = ViewBag.id, _role = ViewBag.role }, null); }
+                @if (ViewBag.role == "trader")
+                {
+                    using (Html.BeginForm("Order", "Предметы_из_игр", new { _id = ViewBag.id, _role = ViewBag.role }))
+                    {
+                        <p>Введите количество игр: </p>
+                        <input type="number" min="0" name="number" , value="0" />
+                        <input type="hidden" name="game_id" value="@item.Код_предмета" />
+                        <p><input type="submit" value="Заказать игру" /></p>
+                    }
+                }
             </td>
         </tr>
     }
 
 </table>
-@Html.ActionLink("Import to Excel", "Excel")
+@Html.ActionLink("Import to Excel", "Excel", new { _id = ViewBag.id, _role = ViewBag.role }, null)
